@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation'
-import { AppstoreOutlined, MailOutlined, HomeOutlined, ReadOutlined, RocketFilled, PayCircleFilled, SettingOutlined } from '@ant-design/icons';
+import { HomeOutlined, ReadOutlined, RocketFilled, PayCircleFilled, MailFilled, FileZipOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 const items = [
   {
@@ -21,52 +21,41 @@ const items = [
     key: '/convert/readme',
     icon: <ReadOutlined />,
   },
+  // {
+  //   label: (
+  //     <a href="/convert/do" title="开始转换">
+  //       开始转换
+  //     </a>
+  //   ),
+  //   key: '/convert/do',
+  //   icon: <RocketFilled />,
+  // },
   {
     label: (
-      <a href="/convert/do" title="开始转换">
-        开始转换
-      </a>
-    ),
-    key: '/convert/do',
-    icon: <RocketFilled />,
-  },
-  {
-    label: (
-      <a href="/pay" title="支付">
-        支付
+      <a href="/pay" title="打赏支持">
+        打赏支持
       </a>
     ),
     key: '/pay',
     icon: <PayCircleFilled />,
   },
   {
-    label: 'Navigation Three - Submenu',
-    key: 'SubMenu',
-    icon: <SettingOutlined />,
-    children: [
-      {
-        type: 'group',
-        label: 'Item 1',
-        children: [
-          {
-            label: 'Option 1',
-            key: 'setting:1',
-          },
-          {
-            label: 'Option 2',
-            key: 'setting:2',
-          },
-        ],
-      },
-    ],
+    label: (
+      <a href="/convert/mail" title="申请转换">
+        申请转换
+      </a>
+    ),
+    key: '/convert/mail',
+    icon: <MailFilled />,
   },
   {
     label: (
-      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-        Navigation Four - Link
+      <a href="/convert/result" title="转换结果">
+        转换结果
       </a>
     ),
-    key: 'alipay',
+    key: '/convert/result',
+    icon: <FileZipOutlined />,
   },
 ];
 const Nav = () => {

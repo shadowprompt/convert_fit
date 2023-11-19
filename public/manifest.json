@@ -1,0 +1,40 @@
+{
+  "short_name": "运动记录转换工具",
+  "name": "运动记录转换格式导入工具",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "192x192 144x144 96x96 72x72 48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "res/drawable-mdpi/ic_shortcut_fit.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "res/drawable-hdpi/ic_shortcut_fit.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "res/drawable-xhdpi/ic_shortcut_fit.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "res/drawable-xxhdpi/ic_shortcut_fit.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "res/drawable-xxxhdpi/ic_shortcut_fit.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

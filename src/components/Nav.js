@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation'
 import { AppstoreOutlined, MailOutlined, HomeOutlined, ReadOutlined, RocketFilled, PayCircleFilled, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 const items = [
@@ -8,7 +9,7 @@ const items = [
         首页
       </a>
     ),
-    key: 'home',
+    key: '/',
     icon: <HomeOutlined />,
   },
   {
@@ -17,7 +18,7 @@ const items = [
         使用须知
       </a>
     ),
-    key: 'readme',
+    key: '/convert/readme',
     icon: <ReadOutlined />,
   },
   {
@@ -26,7 +27,7 @@ const items = [
         开始转换
       </a>
     ),
-    key: 'do',
+    key: '/convert/do',
     icon: <RocketFilled />,
   },
   {
@@ -35,7 +36,7 @@ const items = [
         支付
       </a>
     ),
-    key: 'pay',
+    key: '/pay',
     icon: <PayCircleFilled />,
   },
   {
@@ -69,11 +70,17 @@ const items = [
   },
 ];
 const Nav = () => {
+  const pathname = usePathname()
   const [current, setCurrent] = useState('home');
   const onClick = (e) => {
-    console.log('click ', e);
+    console.log('click ', pathname, e);
     setCurrent(e.key);
   };
+
+  useEffect(() => {
+    setCurrent(pathname);
+  }, [pathname])
+
   return (
     <div style={{marginBottom: '40px'}}>
       <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Nav from '@/components/Nav';
 import { Button, Divider, Input, message, Radio, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import Bottom from '@/components/Bottom';
 
 export default function() {
 
@@ -160,6 +161,7 @@ export default function() {
           </Button>
         </div>
       </section>
+      <Bottom />
     </div>
   )
 }

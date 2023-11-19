@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation'
-import { HomeOutlined, ReadOutlined, RocketFilled, PayCircleFilled, MailFilled, FileZipOutlined } from '@ant-design/icons';
+import { HomeOutlined, ReadOutlined, RocketFilled, PayCircleFilled, MailFilled, FileZipOutlined, ImportOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 const items = [
   {
@@ -56,6 +56,15 @@ const items = [
     ),
     key: '/convert/result',
     icon: <FileZipOutlined />,
+  },
+  {
+    label: (
+      <a href="/convert/import" title="结果导入">
+        结果导入
+      </a>
+    ),
+    key: '/convert/import',
+    icon: <ImportOutlined />,
   },
 ];
 const Nav = () => {

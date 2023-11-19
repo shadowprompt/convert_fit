@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Row, Col, Divider, Radio, List } from 'antd';
 import Nav from '@/components/Nav';
+import Bottom from '@/components/Bottom';
 
 export default function() {
 
@@ -48,6 +49,7 @@ export default function() {
           </Col>
         </Row>
       </div>
+      <Bottom />
     </div>
   );
 }

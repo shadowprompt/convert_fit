@@ -3,6 +3,7 @@
 import React from 'react';
 import Nav from '@/components/Nav';
 import { Divider } from 'antd';
+import Bottom from '@/components/Bottom';
 
 export default function() {
   return (
@@ -52,6 +53,7 @@ export default function() {
           </div>
         </div>
       </div>
+      <Bottom />
     </div>
   )
 }

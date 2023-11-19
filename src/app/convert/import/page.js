@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Nav from '@/components/Nav';
 import { Divider, List } from 'antd';
+import Bottom from '@/components/Bottom';
 
 export default function() {
 
@@ -51,6 +52,7 @@ export default function() {
           </List.Item>
         )}
       />
+      <Bottom />
     </div>
   )
 }

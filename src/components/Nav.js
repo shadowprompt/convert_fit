@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation'
-import { HomeOutlined, ReadOutlined, RocketFilled, PayCircleFilled, MailFilled, FileZipOutlined, ImportOutlined } from '@ant-design/icons';
+import { HomeOutlined, ReadOutlined, RocketFilled, PayCircleFilled, MailFilled, FileZipOutlined, ImportOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 const items = [
   {
@@ -65,6 +65,15 @@ const items = [
     ),
     key: '/convert/import',
     icon: <ImportOutlined />,
+  },
+  {
+    label: (
+      <a href="/convert/log" title="更新日志">
+        更新日志
+      </a>
+    ),
+    key: '/convert/log',
+    icon: <UnorderedListOutlined />,
   },
 ];
 const Nav = () => {

@@ -8,6 +8,10 @@ import Bottom from '@/components/Bottom';
 export default function() {
 
   const [updateLogList] = useState([{
+    label: '2023-11-20',
+    type: 'desc',
+    desc: '转换工具改用离线转换，不再服务器转换了，并实行先打赏🍗后转换'
+  }, {
     label: '2023-10-24',
     type: 'desc',
     desc: '转换工具运行时严重影响共享服务器其它服务运行，暂时下调允许上传的压缩包大小上限'
@@ -51,7 +55,7 @@ export default function() {
   return (
     <div>
       <Nav />
-      <Divider orientation="left">更新日志</Divider>
+      <Divider>更新日志</Divider>
       <List
         size="small"
         bordered

@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
               crossOrigin="anonymous"></Script>
       <Script charSet="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></Script>
       <Script dangerouslySetInnerHTML={{
-        __html: `window.LA.init({id:"K8VYEj2YzzwEOsl6",ck:"K8VYEj2YzzwEOsl6"})`
+        __html: `window.LA?.init({id:"K8VYEj2YzzwEOsl6",ck:"K8VYEj2YzzwEOsl6"})`
       }}></Script>
       <Script dangerouslySetInnerHTML={{
         __html: `var _hmt = _hmt || [];

@@ -18,10 +18,7 @@ export async function GET(request) {
 
 export async function POST(req, res) {
   const requestBody = await req.json();
-  const address = requestBody.address;
-  const type = requestBody.type;
-  const fileName = requestBody.fileName;
-  const status = requestBody.status;
+  const { address, type, fileName, status } = requestBody;
   const ts = Date.now();
   let prevList = localStorage.getItem('list') || '[]';
   prevList = JSON.parse(prevList);
@@ -29,22 +26,19 @@ export async function POST(req, res) {
   dLog('log record ', fileName, `[${address} ${type}]`, status);
 
   if (fileName) {
+    const payload = {
+      ...requestBody,
+      ts, // 更新时间
+    };
+
     const target = prevList.find(item => item.fileName === fileName);
-    // 命中则只更新状态和时间
     if (target) {
-      target.status = status;
-      target.ts = ts;
+      Object.assign(target, payload);
       localStorage.setItem('list', JSON.stringify(prevList));
     } else {
       localStorage.setItem('list', JSON.stringify([
         ...prevList,
-        {
-          address,
-          type,
-          fileName,
-          status,
-          ts,
-        }
+        payload,
       ]));
     }
   }

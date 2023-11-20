@@ -18,10 +18,10 @@ export default function() {
         <p>
           本工具旨在为各位跑友转换运动记录数据，支持将<b>华为运动健康</b>、<b>Zepp Life（原小米运动）</b>官方导出的运动数据转换成业内通用的fit（推荐）或tcx格式，然后即可顺利导入主流的运动平台，比如高驰、佳明、RQrun、Strava等。后续可能会支持fit和tcx格式互转、支持其它运动平台等功能。
         </p>
-        <Divider orientation="left">华为运动记录转换后导入高驰效果</Divider>
+        <Divider>转换效果展示</Divider>
         <Row gutter={16}>
           <Col className="gutter-row" span={10}>
-            <Divider>华为运动记录转换后导入高驰效果</Divider>
+            <Divider>华为运动记录转换后导入高驰</Divider>
             <p>
               官方导出的数据细节很齐全，转换后效果还是不错的
             </p>
@@ -33,7 +33,7 @@ export default function() {
             </div>
           </Col>
           <Col className="gutter-row" span={10} offset={4}>
-            <Divider>小米运动记录转换后导入高驰效果</Divider>
+            <Divider>小米运动记录转换后导入高驰</Divider>
             <p>
               可惜的是官方导出的数据极其不全（无GPS，只有零星的几个时间点有步频信息），转换后基本上只能看看心率了。
             </p>

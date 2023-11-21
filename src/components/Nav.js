@@ -80,7 +80,6 @@ const Nav = () => {
   const pathname = usePathname()
   const [current, setCurrent] = useState('home');
   const onClick = (e) => {
-    console.log('click ', pathname, e);
     setCurrent(e.key);
   };
 

@@ -1,9 +1,8 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import Nav from '@/components/Nav';
 import { Button, Divider, Input, message, Radio, Upload } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import Nav from '@/components/Nav';
 import Bottom from '@/components/Bottom';
 
 export default function() {
@@ -12,16 +11,6 @@ export default function() {
   const [address, setAddress] = useState('');
   const [fileList, setFileList] = useState([]);
   const [uploading, setUploading] = useState(false);
-
-
-
-
-  useEffect(() => {
-    const countWrapper = document.querySelector('.countWrapper');
-    if (countWrapper) {
-      countWrapper.style.display = '';
-    }
-  }, [])
 
   const onAddressChange = (e) => {
     setAddress(e.target.value);
@@ -44,7 +33,6 @@ export default function() {
       body: formData,
     })
       .then((response) => {
-        console.log('response ~ ', response);
         return response.json();
       })
       .then((res) => {

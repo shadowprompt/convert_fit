@@ -8,8 +8,8 @@ export async function GET(request) {
   prevList = JSON.parse(prevList);
   const successList = prevList.filter(item => item.status === 'success');
   const data = {
-    count:  prevList.length + 50,
-    successCount: successList.length + 50,
+    count:  prevList.length,
+    successCount: successList.length,
   };
 
   return NextResponse.json({data});
@@ -18,36 +18,41 @@ export async function GET(request) {
 
 export async function POST(req, res) {
   const requestBody = await req.json();
-  const { address, type, fileName, status } = requestBody;
+  const list = requestBody.list || [];
   const ts = Date.now();
-  let prevList = localStorage.getItem('list') || '[]';
-  prevList = JSON.parse(prevList);
 
-  dLog('log record ', fileName, `[${address} ${type}]`, status);
+  const listLength = list.length;
+  list.forEach((item, index) => {
+    const { address, type, fileName, status } = item || {};
+    dLog('log record ', fileName, `${index + 1}/${listLength}`, `[${address} ${type}]`, status);
 
-  if (fileName) {
-    const payload = {
-      ...requestBody,
-      ts, // 更新时间
-    };
+    if (fileName) {
+      const payload = {
+        ...item,
+        ts, // 更新时间
+      };
 
-    const target = prevList.find(item => item.fileName === fileName);
-    if (target) {
-      Object.assign(target, payload);
-      localStorage.setItem('list', JSON.stringify(prevList));
-    } else {
-      localStorage.setItem('list', JSON.stringify([
-        ...prevList,
-        payload,
-      ]));
+      let prevList = localStorage.getItem('list') || '[]';
+      prevList = JSON.parse(prevList);
+      const target = prevList.find(item => item.fileName === fileName);
+      if (target) {
+        Object.assign(target, payload);
+        localStorage.setItem('list', JSON.stringify(prevList));
+      } else {
+        localStorage.setItem('list', JSON.stringify([
+          ...prevList,
+          payload,
+        ]));
+      }
     }
-  }
+  })
+
   let finalList = localStorage.getItem('list') || '[]';
   finalList = JSON.parse(finalList);
   const successList = finalList.filter(item => item.status === 'success');
   const data = {
-    count:  finalList.length + 50,
-    successCount: successList.length + 50,
+    count:  finalList.length,
+    successCount: successList.length,
   };
 
   return NextResponse.json({data});

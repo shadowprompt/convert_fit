@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Row, Col, Divider, Radio, List } from 'antd';
 import Nav from '@/components/Nav';
@@ -10,21 +10,11 @@ import * as echarts from 'echarts';
 export default function() {
 
   const [listData, setListData] = useState([]);
+  const chartInstanceRef = useRef(null);
 
   function getRecordList() {
     return fetch('/api/recordList');
   }
-
-  useEffect(() => {
-    getRecordList().then(response => response.json()).then(result => {
-      const list = result?.list || [];
-      setListData(list);
-    });
-  }, [])
-
-  useEffect(() => {
-    initChart();
-  }, [listData])
 
   function handleData() {
     const list = listData.map(item => {
@@ -85,7 +75,7 @@ export default function() {
     }
   }
   function initChart() {
-    const myChart = echarts.init(document.getElementById('chart'));
+    chartInstanceRef.current = echarts.init(document.getElementById('chart'));
     const data = handleData();
     // 绘制图表
     const optionData = {
@@ -148,11 +138,29 @@ export default function() {
         },
       ]
     };
-    myChart.setOption(optionData);
+    chartInstanceRef.current.setOption(optionData);
+  }
+
+  function onResize() {
+    if (chartInstanceRef.current) {
+      chartInstanceRef.current.resize();
+    }
   }
 
   useEffect(() => {
     initChart();
+  }, [listData])
+
+  useEffect(() => {
+    window.addEventListener('resize', onResize);
+
+    getRecordList().then(response => response.json()).then(result => {
+      const list = result?.list || [];
+      setListData(list);
+    });
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
   }, [])
 
   return (

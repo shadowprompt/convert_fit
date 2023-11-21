@@ -100,24 +100,26 @@ export default function() {
     <div>
       <Nav />
       <Divider>压缩包文件格式说明</Divider>
-      <section className="app-content">
-        <div className="upload-type">
-          <Radio.Group onChange={onTypeChange} value={type}>
-            <Radio value="huawei">华为运动健康</Radio>
-            <Radio value="zepp">Zepp Life（原小米运动）</Radio>
-          </Radio.Group>
-        </div>
-        <Divider orientation="left" plain>待上传压缩包结构说明</Divider>
-        <div className="upload-desc">
-          { typeRender(type) }
-          <div className="upload-intro">更多说明可以参考<a href="https://www.toutiao.com/article/7260290208145637929/" target="_blank" rel="noreferrer">华为、小米运动记录转fit和tcx格式工具转换效果展示及使用教程</a></div>
-        </div>
+      <div className="app-intro">
+        <section className="app-content">
+          <div className="upload-type">
+            <Radio.Group onChange={onTypeChange} value={type}>
+              <Radio value="huawei">华为运动健康</Radio>
+              <Radio value="zepp">Zepp Life（原小米运动）</Radio>
+            </Radio.Group>
+          </div>
+          <Divider orientation="left" plain>待上传压缩包结构说明</Divider>
+          <div className="upload-desc">
+            { typeRender(type) }
+            <div className="upload-intro">更多说明可以参考<a href="https://www.toutiao.com/article/7260290208145637929/" target="_blank" rel="noreferrer">华为、小米运动记录转fit和tcx格式工具转换效果展示及使用教程</a></div>
+          </div>
 
-        <Divider>提交转换申请</Divider>
-        <p className="upload-box">
-          请将<b>上述压缩包</b>及<b>打赏证明截图</b>发送至JustNotify@qq.com的邮箱
-        </p>
-      </section>
+          <Divider>提交转换申请</Divider>
+          <p className="upload-box">
+            请将<b>上述压缩包</b>及<b>打赏证明截图</b>发送至JustNotify@qq.com的邮箱
+          </p>
+        </section>
+      </div>
       <Bottom />
     </div>
   )

@@ -1,8 +1,18 @@
+body {
+  margin: 0;
+}
 .App {
-  width: 80%;
   min-width: 300px;
-  margin: 0 auto;
   font-size: 16px;
+  .app-header {
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    margin-bottom: 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1; // 避免echart、转换效果预览图等将其遮挡
+  }
   .img-box {
     text-align: center;
   }
@@ -14,6 +24,8 @@
     }
   }
   .app-intro {
+    width: 80%;
+    margin: 0 auto;
     .slogan {
       text-align: center;
       font-size: 20px;

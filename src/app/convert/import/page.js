@@ -33,26 +33,28 @@ export default function() {
   return (
     <div>
       <Nav />
-      <Divider>主流运动平台导入数据入口</Divider>
-      <List
-        size="small"
-        bordered
-        dataSource={importList}
-        renderItem={(item) => (
-          <List.Item>
-            <List.Item.Meta
-              title={(
-                <span>
-                                    <span>{item.label}</span>
-                                    <span><a href={item.url} target="_blank" rel="noreferrer">导入数据入口</a></span>
-                                </span>
-              )}
-              description={item.desc}
-            />
-          </List.Item>
-        )}
-      />
-      <Bottom />
+      <div className="app-intro">
+        <Divider>主流运动平台导入数据入口</Divider>
+        <List
+          size="small"
+          bordered
+          dataSource={importList}
+          renderItem={(item) => (
+            <List.Item>
+              <List.Item.Meta
+                title={(
+                  <span>
+                                      <span>{item.label}</span>
+                                      <span><a href={item.url} target="_blank" rel="noreferrer">导入数据入口</a></span>
+                                  </span>
+                )}
+                description={item.desc}
+              />
+            </List.Item>
+          )}
+        />
+        <Bottom />
+      </div>
     </div>
   )
 }

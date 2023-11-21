@@ -88,15 +88,19 @@ const Nav = () => {
   }, [pathname])
 
   return (
-    <div style={{marginBottom: '40px'}}>
-      <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+    <>
+      <div className="app-header">
+        <div className="app-nav">
+          <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+        </div>
+      </div>
       <div className="app-logo">
         <div className="img-box">
           <img src="/tool-intro.png"
                title="转换格式" alt=""/>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Nav;

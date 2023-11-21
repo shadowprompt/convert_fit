@@ -12,6 +12,9 @@ body {
     position: sticky;
     top: 0;
     z-index: 1; // 避免echart、转换效果预览图等将其遮挡
+    .app-nav {
+      min-width: 80%;
+    }
   }
   .img-box {
     text-align: center;

@@ -99,8 +99,8 @@ export default function() {
   return (
     <div>
       <Nav />
-      <Divider>压缩包文件格式说明</Divider>
       <div className="app-intro">
+        <Divider>压缩包文件格式说明</Divider>
         <section className="app-content">
           <div className="upload-type">
             <Radio.Group onChange={onTypeChange} value={type}>

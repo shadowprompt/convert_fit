@@ -1,13 +1,13 @@
 'use client'
 
-import React, { useState } from 'react';
-import Nav from '@/components/Nav';
+import React from 'react';
 import { Divider, List } from 'antd';
+import Nav from '@/components/Nav';
 import Bottom from '@/components/Bottom';
 
 export default function() {
 
-  const [updateLogList] = useState([{
+  const updateLogList = [{
     label: '2023-11-20',
     type: 'desc',
     desc: '转换工具改用离线转换，不再服务器转换了，并实行先打赏🍗后转换'
@@ -50,26 +50,28 @@ export default function() {
   }, {
     label: '2023-07-28',
     desc: '修正华为数据轨迹漂移问题'
-  }]);
+  }];
 
   return (
     <div>
       <Nav />
-      <Divider>更新日志</Divider>
-      <List
-        size="small"
-        bordered
-        dataSource={updateLogList}
-        renderItem={(item) => (
-          <List.Item>
-            <List.Item.Meta
-              title={<span>{item.label}</span>}
-              description={ item.type ? (item.desc) : (<span className='important_text'>{item.desc}</span>)}
-            />
-          </List.Item>
-        )}
-      />
-      <Bottom />
+      <div className="app-intro">
+        <Divider>更新日志</Divider>
+        <List
+          size="small"
+          bordered
+          dataSource={updateLogList}
+          renderItem={(item) => (
+            <List.Item>
+              <List.Item.Meta
+                title={<span>{item.label}</span>}
+                description={ item.type ? (item.desc) : (<span className='important_text'>{item.desc}</span>)}
+              />
+            </List.Item>
+          )}
+        />
+        <Bottom />
+      </div>
     </div>
   )
 }

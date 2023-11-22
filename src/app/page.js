@@ -12,7 +12,7 @@ export default function() {
   const chartInstanceRef = useRef(null);
 
   function getRecordList() {
-    return fetch('/api/recordList');
+    return fetch('/api/recordList').then(response => response.json());
   }
 
   function handleData() {
@@ -153,7 +153,7 @@ export default function() {
   useEffect(() => {
     window.addEventListener('resize', onResize);
 
-    getRecordList().then(response => response.json()).then(result => {
+    getRecordList().then(result => {
       const list = result?.list || [];
       setListData(list);
     });

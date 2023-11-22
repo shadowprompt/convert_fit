@@ -6,11 +6,11 @@ export default function () {
     successCount: 0,
   });
   function getRecord() {
-    return fetch('/api/record');
+    return fetch('/api/record').then(response => response.json());
   }
 
   useEffect(() => {
-    getRecord().then(response => response.json()).then(result => {
+    getRecord().then(result => {
       setCountInfo(result.data);
     });
   }, [])

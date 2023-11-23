@@ -1,14 +1,16 @@
-'use client'
-
 import React from 'react';
 import Nav from '@/components/Nav';
 import { Divider } from 'antd';
 import Bottom from '@/components/Bottom';
-
+import { metadata as rootMetadata } from '../../layout'
+export const metadata = {
+  title: `使用须知 - ${rootMetadata.title}`,
+  pathname: '/convert/readme',
+}
 export default function() {
   return (
     <div>
-      <Nav />
+      <Nav pathname={metadata.pathname}/>
       <div className="app-intro">
         <Divider>❶声明</Divider>
         <p className="slogan">

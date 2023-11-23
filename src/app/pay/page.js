@@ -1,14 +1,16 @@
-'use client'
-
 import React from 'react';
 import { Divider } from 'antd';
 import Nav from '@/components/Nav';
 import Bottom from '@/components/Bottom';
-
+import { metadata as rootMetadata } from '../layout'
+export const metadata = {
+  title: `打赏支持 - ${rootMetadata.title}`,
+  pathname: '/pay',
+}
 export default function() {
   return (
     <div>
-      <Nav />
+      <Nav pathname={metadata.pathname}/>
       <div className="app-intro">
         <Divider orientation="left">途径一：支付宝</Divider>
         <p>

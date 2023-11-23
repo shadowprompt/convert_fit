@@ -164,7 +164,7 @@ export default function() {
 
   return (
     <div>
-      <Nav />
+      <Nav pathname='/'/>
       <div className="app-intro">
         <p className="slogan">
           每一次运动锻炼了我们的身体，值得留存在我们的记录里，不负每一滴汗水，尊重每一次付出。

@@ -1,13 +1,17 @@
-'use client'
-
-import React, { useState } from 'react';
+import React from 'react';
 import Nav from '@/components/Nav';
-import { Divider, List } from 'antd';
+import { Divider } from 'antd';
 import Bottom from '@/components/Bottom';
+import AppList from '@/components/common/AppList';
+import { metadata as rootMetadata } from '../../layout'
+export const metadata = {
+  title: `导入数据 - ${rootMetadata.title}`,
+}
+
 
 export default function() {
 
-  const [importList] = useState([{
+  const importList = [{
     label: '高驰',
     url: 'https://trainingcn.coros.com/admin/views/activities',
     desc: '上述入口登录后点击右上角"导入数据"'
@@ -28,31 +32,24 @@ export default function() {
     label: '华为',
     url: 'https://h5hosting.dbankcdn.com/cch5/healthkit/data-import/pages/oauth-callback.html#/',
     desc: '先从右上角登录后直接导入'
-  }]);
+  }];
 
   return (
     <div>
       <Nav />
       <div className="app-intro">
         <Divider>主流运动平台导入数据入口</Divider>
-        <List
-          size="small"
-          bordered
-          dataSource={importList}
-          renderItem={(item) => (
-            <List.Item>
-              <List.Item.Meta
-                title={(
-                  <span>
-                                      <span>{item.label}</span>
-                                      <span><a href={item.url} target="_blank" rel="noreferrer">导入数据入口</a></span>
-                                  </span>
-                )}
-                description={item.desc}
-              />
-            </List.Item>
-          )}
-        />
+        <AppList list={importList} renderItem = {(item) => (
+          <>
+            <h4 className="app-list-item-title">
+              <span>{item.label}</span>
+              <span><a href={item.url} target="_blank" rel="noreferrer">导入数据入口</a></span>
+            </h4>
+            <div className="app-list-item-description">
+              {item.desc}
+            </div>
+          </>
+        )}/>
         <Bottom />
       </div>
     </div>

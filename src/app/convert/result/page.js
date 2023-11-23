@@ -1,14 +1,16 @@
-'use client'
-
 import React from 'react';
 import Nav from '@/components/Nav';
 import { Divider, Row, Col } from 'antd';
 import Bottom from '@/components/Bottom';
-
+import { metadata as rootMetadata } from '../../layout'
+export const metadata = {
+  title: `邮件内容 - ${rootMetadata.title}`,
+  metadata: '/convert/result',
+}
 export default function() {
   return (
     <div>
-      <Nav />
+      <Nav pathname={metadata.pathname}/>
       <div className="app-intro">
         <Divider>邮件内容</Divider>
         <p>

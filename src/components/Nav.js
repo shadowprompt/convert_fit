@@ -1,97 +1,51 @@
-import React, { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation'
+import React from 'react';
 import { HomeOutlined, ReadOutlined, RocketFilled, PayCircleFilled, MailFilled, FileZipOutlined, ImportOutlined, UnorderedListOutlined } from '@ant-design/icons';
-import { Menu } from 'antd';
-const items = [
+import AppNav from '@/components/common/AppNav';
+
+const navList = [
   {
-    label: (
-      <a href="/" title="首页">
-        首页
-      </a>
-    ),
-    key: '/',
+    label: '首页',
+    pathname: '/',
     icon: <HomeOutlined />,
   },
   {
-    label: (
-      <a href="/convert/readme" title="使用须知">
-        使用须知
-      </a>
-    ),
-    key: '/convert/readme',
+    label: '使用须知',
+    pathname: '/convert/readme',
     icon: <ReadOutlined />,
   },
-  // {
-  //   label: (
-  //     <a href="/convert/do" title="开始转换">
-  //       开始转换
-  //     </a>
-  //   ),
-  //   key: '/convert/do',
-  //   icon: <RocketFilled />,
-  // },
   {
-    label: (
-      <a href="/pay" title="打赏支持">
-        打赏支持
-      </a>
-    ),
-    key: '/pay',
+    label: '打赏支持',
+    pathname: '/pay',
     icon: <PayCircleFilled />,
   },
   {
-    label: (
-      <a href="/convert/mail" title="申请转换">
-        申请转换
-      </a>
-    ),
-    key: '/convert/mail',
+    label: '申请转换',
+    pathname: '/convert/mail',
     icon: <MailFilled />,
   },
   {
-    label: (
-      <a href="/convert/result" title="转换结果">
-        转换结果
-      </a>
-    ),
-    key: '/convert/result',
+    label: '转换结果',
+    pathname: '/convert/result',
     icon: <FileZipOutlined />,
   },
   {
-    label: (
-      <a href="/convert/import" title="结果导入">
-        结果导入
-      </a>
-    ),
-    key: '/convert/import',
+    label: '结果导入',
+    pathname: '/convert/import',
     icon: <ImportOutlined />,
   },
   {
-    label: (
-      <a href="/convert/log" title="更新日志">
-        更新日志
-      </a>
-    ),
-    key: '/convert/log',
+    label: '更新日志',
+    pathname: '/convert/log',
     icon: <UnorderedListOutlined />,
   },
 ];
-const Nav = () => {
-  const pathname = usePathname()
-  const [current, setCurrent] = useState('home');
-  const onClick = (e) => {
-    setCurrent(e.key);
-  };
-
-  useEffect(() => {
-    setCurrent(pathname);
-  }, [pathname])
+function Nav(props) {
 
   return (
     <>
       <div className="app-header">
         <div className="app-nav">
-          <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+          <AppNav list={navList} pathname={props.pathname}/>
         </div>
       </div>
       <div className="app-logo">
@@ -102,5 +56,5 @@ const Nav = () => {
       </div>
     </>
   );
-};
+}
 export default Nav;

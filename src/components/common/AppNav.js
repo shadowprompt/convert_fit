@@ -6,13 +6,12 @@ function AppNav(props) {
     <div className="app-nav-container">
       {
         list.map((item, index) => (
-          <div key={item.key || item.pathname || index}
-            className={["app-nav-item", pathname === item.pathname ? 'active' : ''].join(' ')}>
-            <span>{item.icon}</span>
-            <span>
-                    <a href={item.pathname} title={item.title || item.label}>{item.label}</a>
-                  </span>
-          </div>
+          <a key={item.key || item.pathname || index}
+             href={item.pathname} title={item.title || item.label}
+             className={["app-nav-item", pathname === item.pathname ? 'active' : ''].join(' ')}>
+            <span style={{marginRight: '8px'}}>{item.icon}</span>
+            <span>{item.label}</span>
+          </a>
         ))
       }
     </div>

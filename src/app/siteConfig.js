@@ -1,3 +1,3 @@
 export default {
-  apiBase: 'http://localhost:8700',
+  apiBase: 'https://gateway.daozhao.com.cn',
 }

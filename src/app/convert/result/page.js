@@ -5,7 +5,7 @@ import ServerBottom from '@/components/server/ServerBottom';
 import { metadata as rootMetadata } from '../../layout'
 export const metadata = {
   title: `邮件内容 - ${rootMetadata.title}`,
-  metadata: '/convert/result',
+  pathname: '/convert/result',
 }
 export default function() {
   return (

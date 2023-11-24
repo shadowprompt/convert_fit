@@ -257,7 +257,7 @@ function MailPage() {
 
   return (
     <div>
-      <Nav />
+      <Nav pathname='/convert/mail'/>
       <div className="app-intro">
         <Divider>转换请求响应统计图</Divider>
         <div id="chart" style={{height: '420px'}}></div>

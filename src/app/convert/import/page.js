@@ -6,6 +6,7 @@ import AppList from '@/components/common/AppList';
 import { metadata as rootMetadata } from '../../layout'
 export const metadata = {
   title: `导入数据 - ${rootMetadata.title}`,
+  pathname: '/convert/import'
 }
 
 
@@ -36,7 +37,7 @@ export default function() {
 
   return (
     <div>
-      <Nav />
+      <Nav pathname={metadata.pathname}/>
       <div className="app-intro">
         <Divider>主流运动平台导入数据入口</Divider>
         <AppList list={importList} renderItem = {(item) => (

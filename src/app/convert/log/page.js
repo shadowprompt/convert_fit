@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider } from 'antd';
 import Nav from '@/components/Nav';
-import Bottom from '@/components/Bottom';
+import ServerBottom from '@/components/server/ServerBottom';
 import AppList from '@/components/common/AppList';
 import { metadata as rootMetadata } from '../../layout'
 export const metadata = {
@@ -62,7 +62,7 @@ export default function() {
       <div className="app-intro">
         <Divider>更新日志</Divider>
         <AppList list={updateLogList} />
-        <Bottom />
+        <ServerBottom />
       </div>
     </div>
   )

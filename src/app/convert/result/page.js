@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from '@/components/Nav';
 import { Divider, Row, Col } from 'antd';
-import Bottom from '@/components/Bottom';
+import ServerBottom from '@/components/server/ServerBottom';
 import { metadata as rootMetadata } from '../../layout'
 export const metadata = {
   title: `邮件内容 - ${rootMetadata.title}`,
@@ -44,7 +44,7 @@ export default function() {
           </Col>
         </Row>
       </div>
-      <Bottom />
+      <ServerBottom />
     </div>
   )
 }

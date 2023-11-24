@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider } from 'antd';
 import Nav from '@/components/Nav';
-import Bottom from '@/components/Bottom';
+import ServerBottom from '@/components/server/ServerBottom';
 import { metadata as rootMetadata } from '../layout'
 export const metadata = {
   title: `打赏支持 - ${rootMetadata.title}`,
@@ -30,7 +30,7 @@ export default function() {
                title="锅巴瓜子 今日头条" alt=""/>
         </div>
       </div>
-      <Bottom />
+      <ServerBottom />
     </div>
   )
 }

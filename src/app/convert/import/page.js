@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from '@/components/Nav';
 import { Divider } from 'antd';
-import Bottom from '@/components/Bottom';
+import ServerBottom from '@/components/server/ServerBottom';
 import AppList from '@/components/common/AppList';
 import { metadata as rootMetadata } from '../../layout'
 export const metadata = {
@@ -50,7 +50,7 @@ export default function() {
             </div>
           </>
         )}/>
-        <Bottom />
+        <ServerBottom />
       </div>
     </div>
   )

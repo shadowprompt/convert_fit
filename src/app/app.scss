@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';;
+  font-family: PingFang SC,Microsoft Yahei,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';;
 }
 .App {
   min-width: 300px;
@@ -13,8 +13,8 @@ body {
       position: relative;
       font-size: 14px;
       white-space: nowrap;
-      cursor: pointer;
       color: inherit;
+      background: white;
       text-decoration: none;
       &.active {
         color: #1677ff;
@@ -26,17 +26,33 @@ body {
         &:after {
           border: 1px solid #1677ff;
         }
+        > .app-nav-container {
+          visibility: visible;
+        }
       }
       a {
-        margin-left: 8px;
+        display: block; // 撑满容器
+        cursor: pointer;
         text-decoration: none;
         color: inherit;
+        vertical-align: middle;
       }
       &:after {
-        inset-inline: 16px;
+        inset-inline: 8px;
         content: '';
         position: absolute;
         bottom: 0;
+      }
+      .app-nav-container {
+        position: absolute;
+        left: 0;
+        padding-inline-start: 0;
+        visibility: hidden;
+        box-shadow: 2px 3px 4px 0 #e2e2e2;
+        border-radius: 8px;
+        .app-nav-item {
+          display: block;
+        }
       }
     }
   }
@@ -60,12 +76,16 @@ body {
     display: flex;
     justify-content: center;
     background: #ffffff;
-    margin-bottom: 40px;
     position: sticky;
     top: 0;
     z-index: 1; // 避免echart、转换效果预览图等将其遮挡
     .app-nav {
       min-width: 80%;
+    }
+  }
+  .app-article-section {
+    img {
+      max-width: 90%;
     }
   }
   .img-box {

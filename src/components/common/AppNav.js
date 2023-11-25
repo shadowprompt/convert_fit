@@ -1,20 +1,34 @@
 import React from 'react';
 
-function AppNav(props) {
-  const { list, pathname } = props;
+function defaultRenderItem(item, index, props) {
+  const { pathname } = props;
   return (
-    <div className="app-nav-container">
+    <li key={item.key || item.pathname || index}
+       className={["app-nav-item", pathname === item.pathname ? 'active' : ''].join(' ')}>
+      <a href={item.pathname} title={item.title || item.label}>
+        <span style={{marginRight: '8px'}}>{item.icon}</span>
+        <span>{item.label}</span>
+      </a>
       {
-        list.map((item, index) => (
-          <a key={item.key || item.pathname || index}
-             href={item.pathname} title={item.title || item.label}
-             className={["app-nav-item", pathname === item.pathname ? 'active' : ''].join(' ')}>
-            <span style={{marginRight: '8px'}}>{item.icon}</span>
-            <span>{item.label}</span>
-          </a>
-        ))
+        item.children && (
+          <ul className="app-nav-container" style={{zIndex: index + 1}}>
+            {
+              item.children.map((it, idx) => defaultRenderItem(it, idx, props))
+            }
+          </ul>
+        )
       }
-    </div>
+    </li>
+  );
+}
+function AppNav(props) {
+  const { list, renderItem = defaultRenderItem } = props;
+  return (
+    <ul className="app-nav-container">
+      {
+        list.map((item, index) => renderItem(item, index, props))
+      }
+    </ul>
   );
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeOutlined, ReadOutlined, RocketFilled, PayCircleFilled, MailFilled, FileZipOutlined, ImportOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { HomeOutlined, ReadOutlined, ExportOutlined, RocketFilled, PayCircleFilled, MailFilled, FileZipOutlined, ImportOutlined, UnorderedListOutlined, CodepenOutlined, CodeSandboxOutlined, MediumOutlined } from '@ant-design/icons';
 import AppNav from '@/components/common/AppNav';
 
 const navList = [
@@ -14,13 +14,31 @@ const navList = [
     icon: <ReadOutlined />,
   },
   {
+    label: '运动记录导出',
+    pathname: 'javascript:void(0);',
+    icon: <ExportOutlined />,
+    children: [{
+      label: '华为运动记录导出',
+      pathname: '/export/huawei',
+      icon: <CodepenOutlined />,
+    }, {
+      label: '华为运动记录导出5年',
+      pathname: '/export/huawei5',
+      icon: <CodeSandboxOutlined />,
+    }, {
+      label: '小米运动记录导出',
+      pathname: '/export/xiaomi',
+      icon: <MediumOutlined />,
+    }]
+  },
+  {
     label: '打赏支持',
     pathname: '/pay',
     icon: <PayCircleFilled />,
   },
   {
-    label: '申请转换',
-    pathname: '/convert/mail',
+    label: '开始转换',
+    pathname: '/convert/do',
     icon: <MailFilled />,
   },
   {

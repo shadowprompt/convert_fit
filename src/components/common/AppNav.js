@@ -5,9 +5,9 @@ function defaultRenderItem(item, index, props) {
   return (
     <li key={item.key || item.pathname || index}
        className={["app-nav-item", pathname === item.pathname ? 'active' : ''].join(' ')}>
-      <a href={item.pathname} title={item.title || item.label}>
-        <span style={{marginRight: '8px'}}>{item.icon}</span>
-        <span>{item.label}</span>
+      <a className="app-nav-item-link" href={item.pathname} title={item.title || item.label}>
+        <span className="app-nav-item-icon">{item.icon}</span>
+        <span className="app-nav-item-text">{item.label}</span>
       </a>
       {
         item.children && (

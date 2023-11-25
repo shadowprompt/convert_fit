@@ -19,15 +19,15 @@ const navList = [
     icon: <ExportOutlined />,
     children: [{
       label: '华为运动记录导出',
-      pathname: '/export/huawei',
+      pathname: '/convert/export/huawei',
       icon: <CodepenOutlined />,
     }, {
       label: '华为运动记录导出5年',
-      pathname: '/export/huawei5',
+      pathname: '/convert/export/huawei5',
       icon: <CodeSandboxOutlined />,
     }, {
       label: '小米运动记录导出',
-      pathname: '/export/xiaomi',
+      pathname: '/convert/export/xiaomi',
       icon: <MediumOutlined />,
     }]
   },

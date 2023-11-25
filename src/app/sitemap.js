@@ -1,6 +1,6 @@
 const SITE = 'https://convert.fit';
 export default function sitemap() {
-  let pageList = ['/convert/mail', '/convert/result', '/convert/import', '/convert/log', '/pay'];
+  let pageList = ['/convert/readme', '/convert/export/huawei', '/convert/export/huawei5', '/convert/export/xiaomi', '/convert/do', '/convert/result', '/convert/import', '/convert/log', '/pay'];
   pageList = pageList.map(item => ({
     url: SITE + item,
     lastModified: new Date(),

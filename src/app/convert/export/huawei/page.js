@@ -5,7 +5,7 @@ import { getFileData } from '@/lib/posts-md';
 import { metadata as rootMetadata } from '@/app/layout';
 
 function getMdData() {
-  return getFileData('./src/app/md', 'xiaomi');
+  return getFileData('./src/app/md', 'huawei');
 }
 
 export async function generateMetadata({ params, searchParams }, parent) {
@@ -13,7 +13,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
   return {
     title: `${data.title} - ${rootMetadata.title}`,
-    keywords: '小米运动健康zepp life数据导出,小米运动健康zepp life数据导入高驰佳明,小米运动健康zepp life数据tcx,小米运动健康zepp life数据fit,小米运动健康zepp life数据导入华为,小米运动健康zepp life数据导入RQrun,小米运动健康zepp life导入数据'
+    keywords: '华为运动健康导出,华为运动健康导入高驰佳明,华为运动健康tcx,华为运动健康fit,华为运动健康导入华为,华为运动健康导入RQrun,华为运动健康导入数据'
   }
 }
 
@@ -22,7 +22,7 @@ export default async function() {
 
   return (
     <div>
-      <Nav pathname='/export/xiaomi'/>
+      <Nav pathname='/convert/export/huawei'/>
       <div className="app-intro">
         <section className="app-article-section" dangerouslySetInnerHTML={{
           __html: data.html

@@ -43,6 +43,17 @@ body {
         position: absolute;
         bottom: 0;
       }
+      .app-nav-item-link {
+        //border: 1px solid red;
+      }
+      .app-nav-item-icon {
+        margin-right: 8px;
+        //display: flex;
+        //align-items: center;
+      }
+      .app-nav-item-text {
+        //margin-left: 8px;
+      }
       .app-nav-container {
         position: absolute;
         left: 0;

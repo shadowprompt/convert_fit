@@ -22,7 +22,7 @@ export default async function() {
 
   return (
     <div>
-      <Nav pathname='/export/huawei5'/>
+      <Nav pathname='/convert/export/huawei5'/>
       <div className="app-intro">
         <section className="app-article-section" dangerouslySetInnerHTML={{
           __html: data.html

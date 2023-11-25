@@ -1,9 +1,8 @@
 import Script from 'next/script'
-import { Inter } from 'next/font/google'
 import './app.scss';
 
 import StyledComponentsRegistry from '../lib/AntdRegistry';
-const inter = Inter({ subsets: ['latin'] })
+
 export const metadata = {
   title: '运动记录转换工具 - 华为小米运动记录转换格式导入工具 && 华为小米运动记录转fit和tcx格式导入高驰佳明工具',
   description: '一款运动记录转换导入工具，一款支持将华为小米运动记录转换格式导入高驰佳明工具，它能把华为小米运动记录转fit和tcx格式导入高驰佳明等主流运动平台。',
@@ -20,7 +19,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="zh">
-      <body className={inter.className}>
+      <body>
         <div className="App">
           <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         </div>

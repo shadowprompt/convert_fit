@@ -5,7 +5,7 @@ import { getFileData } from '@/lib/posts-md';
 import { metadata as rootMetadata } from '@/app/layout';
 
 function getMdData() {
-  return getFileData('./src/app/md', 'huawei5');
+  return getFileData('./src/markdown/convert/export', 'huawei5');
 }
 
 export async function generateMetadata({ params, searchParams }, parent) {

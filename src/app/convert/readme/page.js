@@ -36,7 +36,7 @@ export default function() {
 
         <Divider>❸申请转换</Divider>
         <p>
-          请将官方导出的运动记录<b>移除密码后</b>重新压缩成<b>zip包</b>及<b>打赏证明截图</b>发送至JustNotify@qq.com的邮箱
+          请将官方导出的运动记录<b>移除密码后</b>重新压缩成<b>zip包</b>及<b>打赏证明截图</b>发送至<b>JustNotify@qq.com</b>的邮箱
         </p>
 
         <Divider>❹接收转换结果</Divider>

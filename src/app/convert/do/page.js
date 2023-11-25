@@ -277,7 +277,7 @@ function MailPage() {
 
           <Divider>提交转换申请</Divider>
           <p className="upload-box">
-            请将<b>上述压缩包</b>及<b>打赏证明截图</b>发送至JustNotify@qq.com的邮箱
+            请将<b>上述压缩包</b>及<b>打赏证明截图</b>发送至<b>JustNotify@qq.com</b>的邮箱
           </p>
         </section>
       </div>

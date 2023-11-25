@@ -2,7 +2,7 @@ import React from 'react';
 import siteConfig from '@/app/siteConfig';
 
 function getRecord() {
-  return fetch(siteConfig.apiBase + '/convert/record').then(response => response.json());
+  return fetch(siteConfig.apiBase + '/convert/record', { cache: 'force-cache' }).then(response => response.json());
 }
 async function ServerBottom() {
 

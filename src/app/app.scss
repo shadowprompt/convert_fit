@@ -8,6 +8,7 @@ body {
   .app-nav-container {
     .app-nav-item {
       display: inline-block;
+      height: 40px;
       line-height: 40px;
       padding-inline: 16px;
       position: relative;
@@ -43,19 +44,16 @@ body {
         position: absolute;
         bottom: 0;
       }
-      .app-nav-item-link {
-        //border: 1px solid red;
-      }
       .app-nav-item-icon {
         margin-right: 8px;
-        //display: flex;
-        //align-items: center;
-      }
-      .app-nav-item-text {
-        //margin-left: 8px;
+        // 避免antd的vertical-align: -0.125em值加载后造成icon抖动，提前加载相同样式内容
+        .anticon {
+          vertical-align: -0.125em;
+        }
       }
       .app-nav-container {
         position: absolute;
+        top: 100%;
         left: 0;
         padding-inline-start: 0;
         visibility: hidden;

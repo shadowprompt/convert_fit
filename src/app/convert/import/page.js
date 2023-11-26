@@ -5,7 +5,7 @@ import ServerBottom from '@/components/server/ServerBottom';
 import AppList from '@/components/common/AppList';
 import { metadata as rootMetadata } from '../../layout'
 export const metadata = {
-  title: `导入数据 - ${rootMetadata.title}`,
+  title: `转换结果导入 - ${rootMetadata.title}`,
   pathname: '/convert/import'
 }
 

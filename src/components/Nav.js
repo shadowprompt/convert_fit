@@ -47,7 +47,7 @@ const navList = [
     icon: <FileZipOutlined />,
   },
   {
-    label: '结果导入',
+    label: '转换结果导入',
     pathname: '/convert/import',
     icon: <ImportOutlined />,
   },

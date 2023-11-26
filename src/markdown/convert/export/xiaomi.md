@@ -1,5 +1,7 @@
 ---
 title: 小米运动记录导出
+description: '小米官方开放了数据导出入口，只是比较隐晦，需要在注销账号那边选择导出，按照步骤就能申请导出了，一两分钟就能收到邮件提示下载压缩包，同事附带的有压缩包密码，然后凭密码解压即可。'
+keywords: '小米运动健康zepp life数据导出,小米运动健康zepp life数据导入高驰佳明,小米运动健康zepp life数据tcx,小米运动健康zepp life数据fit,小米运动健康zepp life数据导入华为,小米运动健康zepp life数据导入RQrun,小米运动健康zepp life导入数据'
 date: 2023-07-09
 ---
 ### 数据导出路径

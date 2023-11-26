@@ -4,7 +4,7 @@ import { Divider, Row, Col } from 'antd';
 import ServerBottom from '@/components/server/ServerBottom';
 import { metadata as rootMetadata } from '../../layout'
 export const metadata = {
-  title: `邮件内容 - ${rootMetadata.title}`,
+  title: `转换结果 - ${rootMetadata.title}`,
   pathname: '/convert/result',
 }
 export default function() {

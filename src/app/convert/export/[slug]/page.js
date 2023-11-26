@@ -4,25 +4,23 @@ import ServerBottom from '@/components/server/ServerBottom';
 import { getFileData } from '@/lib/posts-md';
 import { metadata as rootMetadata } from '@/app/layout';
 
-function getMdData() {
-  return getFileData('./src/markdown/convert/export', 'huawei5');
-}
-
 export async function generateMetadata({ params, searchParams }, parent) {
-  const data = await getMdData();
+  const data = await getFileData('./src/markdown/convert/export', params.slug);
 
   return {
     title: `${data.title} - ${rootMetadata.title}`,
-    keywords: '华为运动健康导出,华为运动健康导入高驰佳明,华为运动健康tcx,华为运动健康fit,华为运动健康导入华为,华为运动健康导入RQrun,华为运动健康导入数据',
+    description: data.description,
+    keywords: data.keywords,
   }
 }
 
-export default async function() {
-  const data = await getMdData();
+export default async function Page({ params }) {
+  console.log('abc ~ ',params);
+  const data = await getFileData('./src/markdown/convert/export', params.slug);
 
   return (
     <div>
-      <Nav pathname='/convert/export/huawei5'/>
+      <Nav pathname='/convert/export/huawei'/>
       <div className="app-intro">
         <section className="app-article-section" dangerouslySetInnerHTML={{
           __html: data.html

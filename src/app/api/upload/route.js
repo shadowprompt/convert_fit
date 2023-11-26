@@ -2,13 +2,20 @@ import { NextResponse } from "next/server";
 const { dLog, nodeStore } = require('@daozhao/utils');
 const multer = require('multer');
 const fs = require('fs');
-const {mkdirsSync, checkLock, releaseLock, setLock} = require("../../node/tools");
+const os = require("os");
+const {mkdirsSync, checkLock, releaseLock, setLock, record} = require("../../node/tools");
 
-const localStorage = nodeStore('../localStorage/bundless_fit');
-mkdirsSync('/tmp/fit_upload_temp');
+const ROOT_PATH = os.platform() === 'win32' ? 'D:/Dev': '/tmp';
+const UPLOAD_PATH = `${ROOT_PATH}/fit_upload`;
+const UPLOAD_TEMP_PATH = `${ROOT_PATH}/fit_upload_temp`;
+
+mkdirsSync(UPLOAD_TEMP_PATH);
+const upload = multer({ dest: UPLOAD_TEMP_PATH });
+
+releaseLock();
+
 const huaweiHandler = require('../../node/huaweiHandler');
 const zeppHandler = require('../../node/zeppHandler');
-const upload = multer({ dest: '/tmp/fit_upload_temp/' });
 export const dynamic = 'force-dynamic' // defaults to force-static
 export async function GET(request) {
   const data = {
@@ -43,18 +50,12 @@ async function uploadHandler(req, res) {
     setLock(`[${address} ${type}] ${new Date().toString()}`);
   }
 
-  let prevList = localStorage.getItem('list') || '[]';
-  prevList = JSON.parse(prevList);
-  localStorage.setItem('list', JSON.stringify([
-    ...prevList,
-    {
-      address,
-      type,
-      fileName,
-      ts,
-    }
-  ]));
-  mkdirsSync('/tmp/fit_upload_temp');
+  record({
+    address,
+    type,
+    fileName,
+  });
+  mkdirsSync(UPLOAD_TEMP_PATH);
 
   const file = formData.get('zip_file');
   if(file && file.size === 0){
@@ -65,7 +66,7 @@ async function uploadHandler(req, res) {
     const originalName = file.originalname || '';
     const list = originalName.split('.');
     const ext = list[list.length - 1];
-    const baseFilePath = `/tmp/fit_upload`;
+    const baseFilePath = UPLOAD_PATH;
     mkdirsSync(baseFilePath);
     // const targetPath= `${baseFilePath}/${fileName}.${ext}`;
     const targetPath= `${baseFilePath}/${fileName}.zip`;

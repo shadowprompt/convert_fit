@@ -5,6 +5,7 @@ const { exec } = require('child_process');
 const path = require("path");
 const { dLog, nodeStore } = require('@daozhao/utils');
 const localStorage = nodeStore('../localStorage/bundless_fit');
+const axios = require('axios');
 
 const gpsTransformer = require('./gpsTransformer');
 const {makeZip, sendMail} = require("./mail");
@@ -614,43 +615,68 @@ function pack(baseDir, info) {
         makeZip(baseDir + '/fit', `${baseFilePath}/${fileName}/fit.zip`)
           .then(() => makeZip(baseDir + '/tcx', `${baseFilePath}/${fileName}/tcx.zip`))
           .then(() => {
-            const fitUrl = `${baseUrl}/fit.zip`;
-            const tcxUrl = `${baseUrl}/tcx.zip`;
+              const fitUrl = `${baseUrl}/fit.zip`;
+              const tcxUrl = `${baseUrl}/tcx.zip`;
 
-            let prevList = localStorage.getItem('list') || '[]';
-            prevList = JSON.parse(prevList);
-            const target = prevList.find(item => item.fileName === fileName);
-            const ts = Date.now();
-            if (target) {
-                target.status = 'success';
-                target.ts = ts;
-                localStorage.setItem('list', JSON.stringify(prevList));
-            } else {
-                localStorage.setItem('list', JSON.stringify([
-                    ...prevList,
-                    {
-                        address,
-                        type,
-                        fileName,
-                        status: 'success',
-                        ts,
-                    }
-                ]));
-            }
+              record({
+                  address,
+                  type,
+                  fileName,
+                  status: 'success',
+                  fileCreatedCount,
+              });
 
 
-            dLog('log zip success', `[${address} ${type}] ${baseFilePath}/${fileName}/fit.zip and tcx.zip`);
-            sendMail('qq', {
-                from: "justnotify@qq.com",
-                to: address,
-                subject: "运动记录转换完成通知 https://convert.fit",
-                // text: "Plaintext version of the message",
-                html: `您提交的运动记录已经成功转换成fit和tcx格式，结果文件已经准备好了，fit格式结果下载地址<a href="${fitUrl}" target="_blank">${fitUrl}</a>，tcx格式结果下载地址<a href="${tcxUrl}" target="_blank">${tcxUrl}</a>`,
-            });
-        }).catch(err => {
+              dLog('log zip success', `[${address} ${type}] ${baseFilePath}/${fileName}/fit.zip and tcx.zip`);
+              sendMail('qq', {
+                  from: "justnotify@qq.com",
+                  to: "jinicgood@qq.com", // 不再对外发送邮件
+                  subject: `${address} ${type} ${fileName} ${fileCreatedCount} 运动记录转换完成通知 https://convert.fit`,
+                  // text: "Plaintext version of the message",
+                  html: `您提交的运动记录已经成功转换成fit和tcx格式，结果文件已经准备好了，fit格式结果下载地址<a href="${fitUrl}" target="_blank">${fitUrl}</a>，tcx格式结果下载地址<a href="${tcxUrl}" target="_blank">${tcxUrl}</a>`,
+              });
+          }).catch(err => {
             dLog('zip error', err);
         })
     }
+}
+
+
+function recordToLocalStorage(recordInfo = {}, loc) {
+    let prevList = localStorage.getItem('list') || '[]';
+    prevList = JSON.parse(prevList);
+    if (recordInfo.fileName) {
+        const target = prevList.find(item => item.fileName === recordInfo.fileName);
+        const ts = Date.now();
+        if (target) {
+            target.status = recordInfo.status;
+            target.ts = ts;
+            localStorage.setItem('list', JSON.stringify(prevList));
+        } else {
+            localStorage.setItem('list', JSON.stringify([
+                ...prevList,
+                {
+                    ...recordInfo,
+                    ts,
+                }
+            ]));
+        }
+    }
+}
+
+function recordToWeb(recordInfo) {
+    console.log('recordToWeb ~ ', recordInfo);
+    // axios.post('https://gateway.daozhao.com.cn/convert/record', {
+    //     list: [recordInfo],
+    // }).then(() => {
+    //     dLog('log record', 'success', recordInfo.fileName);
+    // }).catch(err => {
+    //     dLog('warn', 'log record', 'fail', recordInfo.fileName);
+    // });
+}
+
+function record(recordInfo = {}, loc) {
+    recordToWeb(recordInfo);
 }
 
 module.exports = {
@@ -660,5 +686,6 @@ module.exports = {
     makeTCX,
     makeFIT,
     mkdirsSync,
-    pack
+    pack,
+    record,
 }

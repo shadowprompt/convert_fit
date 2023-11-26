@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Divider, Input, message, Radio, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import Nav from '@/components/Nav';
-import ServerBottom from '@/components/server/ServerBottom';
+import ClientBottom from '@/components/client/ClientBottom';
 
 export default function() {
 
@@ -101,57 +101,59 @@ export default function() {
   return (
     <div>
       <Nav />
-      <Divider>1. 请输入接收结果的邮箱</Divider>
-      <div className="upload-address">
-        <Input placeholder="转换结果将以邮件形式通知" value={address} onChange={onAddressChange}/>
+      <div className="app-intro">
+        <Divider>1. 请输入接收结果的邮箱</Divider>
+        <div className="upload-address">
+          <Input placeholder="转换结果将以邮件形式通知" value={address} onChange={onAddressChange}/>
 
+        </div>
+        <Divider>2. 请选择正确的数据类型</Divider>
+        <section className="app-content">
+          <div className="upload-type">
+            <Radio.Group onChange={onTypeChange} value={type}>
+              <Radio value="huawei">华为运动健康</Radio>
+              <Radio value="zepp">Zepp Life（原小米运动）</Radio>
+            </Radio.Group>
+          </div>
+          <Divider orientation="left" plain>待上传压缩包结构说明</Divider>
+          <div className="upload-desc">
+            { typeRender(type) }
+            <div className="upload-intro">更多说明可以参考<a href="https://www.toutiao.com/article/7260290208145637929/" target="_blank" rel="noreferrer">华为、小米运动记录转fit和tcx格式工具转换效果展示及使用教程</a></div>
+          </div>
+
+          <Divider>3. 上传数据</Divider>
+
+          <div className="upload-box">
+            <Upload onRemove={onRemove} beforeUpload={beforeUpload} fileList={fileList} accept="zip" maxCount={1}>
+              <Button icon={<UploadOutlined />}>选择文件</Button>
+            </Upload>
+
+            {
+              (fileList.length === 0 || !address) && (
+                <div>
+                  {
+                    (!address) && (
+                      <div style={{color: "red"}}>邮箱地址别忘了填写哦，转换结果需要通过邮箱发送</div>
+                    )
+                  }
+                </div>
+              )
+            }
+            <Button
+              type="primary"
+              onClick={handleUpload}
+              disabled={fileList.length === 0 || !address}
+              loading={uploading}
+              style={{
+                marginTop: 16,
+              }}
+            >
+              {uploading ? '正在上传' : '确认上传'}
+            </Button>
+          </div>
+        </section>
       </div>
-      <Divider>2. 请选择正确的数据类型</Divider>
-      <section className="app-content">
-        <div className="upload-type">
-          <Radio.Group onChange={onTypeChange} value={type}>
-            <Radio value="huawei">华为运动健康</Radio>
-            <Radio value="zepp">Zepp Life（原小米运动）</Radio>
-          </Radio.Group>
-        </div>
-        <Divider orientation="left" plain>待上传压缩包结构说明</Divider>
-        <div className="upload-desc">
-          { typeRender(type) }
-          <div className="upload-intro">更多说明可以参考<a href="https://www.toutiao.com/article/7260290208145637929/" target="_blank" rel="noreferrer">华为、小米运动记录转fit和tcx格式工具转换效果展示及使用教程</a></div>
-        </div>
-
-        <Divider>3. 上传数据</Divider>
-
-        <div className="upload-box">
-          <Upload onRemove={onRemove} beforeUpload={beforeUpload} fileList={fileList} accept="zip" maxCount={1}>
-            <Button icon={<UploadOutlined />}>选择文件</Button>
-          </Upload>
-
-          {
-            (fileList.length === 0 || !address) && (
-              <div>
-                {
-                  (!address) && (
-                    <div style={{color: "red"}}>邮箱地址别忘了填写哦，转换结果需要通过邮箱发送</div>
-                  )
-                }
-              </div>
-            )
-          }
-          <Button
-            type="primary"
-            onClick={handleUpload}
-            disabled={fileList.length === 0 || !address}
-            loading={uploading}
-            style={{
-              marginTop: 16,
-            }}
-          >
-            {uploading ? '正在上传' : '确认上传'}
-          </Button>
-        </div>
-      </section>
-      <ServerBottom />
+      <ClientBottom />
     </div>
   )
 }

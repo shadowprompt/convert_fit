@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
         __html: `var _hmt = _hmt || [];
         (function() {
         var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?b34ee1af1abd3e92226536451fb6a65f";
+        hm.src = "https://hm.baidu.com/hm.js?cccd115b0d9d9ec40f6222a8f6a35a54";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
       })();`

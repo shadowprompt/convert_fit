@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from 'next/cache';
+
 const { dLog, nodeStore } = require('@daozhao/utils');
 
 const localStorage = nodeStore('../localStorage/bundless_fit');
@@ -55,5 +57,6 @@ export async function POST(req, res) {
     successCount: successList.length,
   };
 
+  revalidatePath('/', 'layout'); // 缓存数据失效，重新获取
   return NextResponse.json({data});
 }

@@ -22,7 +22,10 @@ export default async function Page({ params }) {
     <div>
       <Nav pathname='/convert/export/huawei'/>
       <div className="app-intro">
-        <section className="app-article-section" dangerouslySetInnerHTML={{
+        <div className="app-article-title">
+          <h1>{data.title}</h1>
+        </div>
+        <section className="app-article-content" dangerouslySetInnerHTML={{
           __html: data.html
         }}></section>
         <ServerBottom />

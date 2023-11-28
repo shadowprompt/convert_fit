@@ -217,7 +217,7 @@ function MailPage() {
           <p className="sub"><b>Motion path detail data & description/motion path detail data.json</b></p>
           <p>放至一个文件夹内，打包成zip压缩包上传</p>
           <p className="img-box">
-            <img src='/zip-intro-huawei.png' alt='华为压缩包结构说明' />
+            <img src='/zip-intro-huawei.png' title='华为压缩包结构说明' alt='华为压缩包结构说明' />
           </p>
         </div>
       );
@@ -231,7 +231,7 @@ function MailPage() {
           <p className="sub"><b>ACTIVITY_MINUTE/ACTIVITY_MINUTE_xxx.csv</b></p>
           <p>放至一个文件夹内，打包成zip压缩包上传</p>
           <p className="img-box">
-            <img src='/zip-intro-zepp.png' alt='zepp压缩包结构说明' />
+            <img src='/zip-intro-zepp.png' title='zepp压缩包结构说明' alt='zepp压缩包结构说明' />
           </p>
         </div>
       );

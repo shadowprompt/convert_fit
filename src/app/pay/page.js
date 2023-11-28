@@ -18,7 +18,7 @@ export default function() {
         </p>
         <div className="img-box">
           <img className="zfb" src="/zfb.png"
-               title="支付宝" alt=""/>
+               title="支付宝" alt="支付宝"/>
         </div>
         <Divider orientation="left">途径二：今日头条</Divider>
         <p>
@@ -26,8 +26,8 @@ export default function() {
         </p>
         <div className="toutiao-box">
           <div className="toutiao-des">欢迎来<span className="highlight">今日头条</span>关注支持我</div>
-          <img className="zfb" src="/qrcode.png"
-               title="锅巴瓜子 今日头条" alt=""/>
+          <img className="toutiao" src="/qrcode.png"
+               title="锅巴瓜子 今日头条" alt="锅巴瓜子 今日头条"/>
         </div>
       </div>
       <ServerBottom />

@@ -51,7 +51,7 @@ export default function() {
         <div className="app-logo">
           <div className="img-box">
             <img src="/type-intro.png"
-                 title="运动类型说明" alt=""/>
+                 title="运动类型说明" alt="运动类型说明"/>
           </div>
         </div>
       </div>

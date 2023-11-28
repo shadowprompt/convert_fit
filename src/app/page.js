@@ -25,7 +25,7 @@ function Home() {
             <div className="app-logo">
               <div className="img-box">
                 <img src="/huawei_coros.jpeg"
-                     title="华为运动记录转换后导入高驰效果" alt=""/>
+                     title="华为运动记录转换后导入高驰效果" alt="华为运动记录转换后导入高驰效果"/>
               </div>
             </div>
           </Col>
@@ -40,7 +40,7 @@ function Home() {
             <div className="app-logo">
               <div className="img-box">
                 <img src="/zepp_coros.jpeg"
-                     title="小米运动记录转换后导入高驰效果" alt=""/>
+                     title="小米运动记录转换后导入高驰效果" alt="小米运动记录转换后导入高驰效果"/>
               </div>
             </div>
           </Col>

@@ -19,7 +19,7 @@ export default function() {
         <div className="app-logo">
           <div className="img-box">
             <img src="/mail_result.png"
-                 title="邮件内容" alt=""/>
+                 title="邮件内容" alt="邮件内容"/>
           </div>
         </div>
         <p>
@@ -30,7 +30,7 @@ export default function() {
             <div className="app-logo">
               <div className="img-box">
                 <img src="/fit_result.png"
-                     title="fit.zip" alt=""/>
+                     title="fit.zip" alt="fit.zip"/>
               </div>
             </div>
           </Col>
@@ -38,7 +38,7 @@ export default function() {
             <div className="app-logo">
               <div className="img-box">
                 <img src="/tcx_result.png"
-                     title="tcx.zip" alt=""/>
+                     title="tcx.zip" alt="tcx.zip"/>
               </div>
             </div>
           </Col>

@@ -1,8 +1,9 @@
-const SITE = 'https://convert.fit';
+import siteConfig from '@/app/siteConfig';
+
 export default function sitemap() {
   let pageList = ['/convert/readme', '/convert/export/huawei', '/convert/export/huawei5', '/convert/export/xiaomi', '/convert/do', '/convert/result', '/convert/import', '/convert/log', '/pay'];
   pageList = pageList.map(item => ({
-    url: SITE + item,
+    url: siteConfig.siteUrl + item,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.5,
@@ -10,7 +11,7 @@ export default function sitemap() {
 
   return [
     {
-      url: SITE,
+      url: siteConfig.siteUrl,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,

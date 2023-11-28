@@ -1,4 +1,4 @@
-const SITE = 'https://convert.fit';
+import siteConfig from '@/app/siteConfig';
 export default function robots() {
   return {
     rules: {
@@ -6,6 +6,6 @@ export default function robots() {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: SITE + '/sitemap.xml',
+    sitemap: siteConfig.siteUrl + '/sitemap.xml',
   }
 }

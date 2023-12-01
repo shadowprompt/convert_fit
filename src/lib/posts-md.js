@@ -1,8 +1,7 @@
 import { promises as fsp } from 'fs';
 import path from 'path';
 import fm from 'front-matter';
-import {remark} from 'remark';
-import remarkhtml from 'remark-html';
+import { parse } from 'marked';
 import * as dateformat from './dateformat';
 const fileExt = 'md';
 // return absolute path to folder
@@ -26,7 +25,7 @@ export async function getFileData(dir = './', id) {
     stat = await fsp.stat(file),
     data = await fsp.readFile(file, 'utf8'),
     matter = fm(data),
-    html = (await remark().use(remarkhtml).process(matter.body)).toString();
+    html = (await parse(matter.body)).toString();
   // date formatting
   const date = matter.attributes.date || stat.ctime;
   matter.attributes.date = date.toUTCString();

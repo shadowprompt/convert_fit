@@ -10,8 +10,10 @@ function defaultRenderItem(item, index, props) {
     isActive = item.pathname === parentPathname;
   }
 
+  const itemId = 'fit' + item.pathname.replaceAll('/', '_');
+
   return (
-    <li key={item.key || item.pathname || index}
+    <li key={item.key || item.pathname || index} id={itemId}
        className={["app-nav-item", isActive ? 'active' : ''].join(' ')}>
       <a className="app-nav-item-link" href={item.href || item.pathname} title={item.title || item.label}>
         <span className="app-nav-item-icon">{item.icon}</span>

@@ -1,8 +1,11 @@
 import siteConfig from '@/app/siteConfig';
+import { getMdList } from '@/lib/utils';
 
 export default function sitemap() {
-  let pageList = ['/convert/readme', '/convert/export/huawei', '/convert/export/huawei5', '/convert/export/xiaomi', '/convert/do', '/convert/result', '/convert/import', '/convert/log', '/pay'];
-  pageList = pageList.map(item => ({
+  const mdList = getMdList();
+  const pathnameList = mdList.map(item => item.pathname);
+
+  const pageList = pathnameList.map(item => ({
     url: siteConfig.siteUrl + item,
     lastModified: new Date(),
     changeFrequency: 'weekly',

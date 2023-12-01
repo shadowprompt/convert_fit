@@ -26,17 +26,6 @@ date: 2023-07-16
 
 #### ❺解压后文件夹命名规则说明
 
-![图片](/type-intro.png)
-
-### 转换效果展示
-
-<div style="display: flex; justify-content: space-between">
-    <div style="width: 45%; margin-right: 1%">
-        <img src="/huawei_coros.jpeg"
-                     title="华为运动记录转换后导入高驰效果" alt="华为运动记录转换后导入高驰效果"/>
-    </div>
-    <div style="width: 45%; margin-left: 1%">
-        <img src="/zepp_coros.jpeg"
-                     title="小米运动记录转换后导入高驰效果" alt="小米运动记录转换后导入高驰效果"/>
-    </div>
+<div class="img-box">
+    <img class="zfb" src="/type-intro.png" title="运动类型说明" alt="运动类型说明">
 </div>

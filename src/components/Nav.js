@@ -15,7 +15,8 @@ const navList = [
   },
   {
     label: '运动记录导出',
-    pathname: 'javascript:void(0);',
+    href: 'javascript:void(0);',
+    pathname: '/convert/export',
     icon: <ExportOutlined />,
     children: [{
       label: '华为运动记录导出',
@@ -69,7 +70,7 @@ function Nav(props) {
       <div className="app-logo">
         <div className="img-box">
           <img src="/tool-intro.png"
-               title="转换格式" alt=""/>
+               title="转换格式" alt="转换格式"/>
         </div>
       </div>
     </>

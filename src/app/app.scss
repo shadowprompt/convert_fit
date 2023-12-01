@@ -18,7 +18,9 @@ body {
       background: white;
       text-decoration: none;
       &.active {
-        color: #1677ff;
+        >.app-nav-item-link { // 仅其直接子元素为激活态
+          color: #1677ff;
+        }
         &:after {
           border: 1px solid #1677ff;
         }

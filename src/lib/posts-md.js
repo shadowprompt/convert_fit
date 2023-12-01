@@ -7,7 +7,7 @@ const fileExt = 'md';
 // return absolute path to folder
 function absPath(dir) {
   return (
-    path.isAbsolute(dir) ? dir : path.resolve(process.cwd(), dir)
+    path.isAbsolute(dir) ? dir : path.join(process.cwd(), './src/markdown', dir)
   );
 }
 // return array of files by type in a directory and remove extensions
@@ -19,9 +19,19 @@ export async function getFileIds(dir = './') {
     .map((fn) => path.basename(fn, path.extname(fn)));
 }
 
-export async function getFileData(dir = './', id) {
+export async function getFileData(slug, dir = './') {
+  const slugList = Array.isArray(slug) ? slug : [slug];
+  // 最后一项为文件名，其余是目录名
+  const rawId = slugList.pop() || '';
+  const id = rawId || 'index'; // 为空时默认为 index
+  let dirPath  = dir;
+  if (slugList.length > 0) {
+    dirPath += slugList.join('/') + '/';
+  }
+  // dirPath可能以./开头，需要去掉.
+  const pathname = dirPath.replace(/^(\.)/, '') + rawId;
   const
-    file = path.join(absPath(dir), `${id}.${fileExt}`),
+    file = path.join(absPath(dirPath), `${id}.${fileExt}`),
     stat = await fsp.stat(file),
     data = await fsp.readFile(file, 'utf8'),
     matter = fm(data),
@@ -41,6 +51,7 @@ export async function getFileData(dir = './', id) {
     mins        = Math.ceil(count / readPerMin);
   matter.attributes.wordcount = `${ numFormat.format(words) } words, ${ numFormat.format(mins) }-minute read`;
   return {
+    pathname,
     id,
     html,
     ...matter.attributes

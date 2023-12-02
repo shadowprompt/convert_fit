@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeOutlined, ReadOutlined, ExportOutlined, RocketFilled, PayCircleFilled, MailFilled, FileZipOutlined, ImportOutlined, UnorderedListOutlined, CodepenOutlined, CodeSandboxOutlined, MediumOutlined } from '@ant-design/icons';
+import { HomeOutlined, ReadOutlined, ExportOutlined, DatabaseOutlined, PayCircleFilled, MailFilled, FileZipOutlined, ImportOutlined, UnorderedListOutlined, CodepenOutlined, CodeSandboxOutlined, MediumOutlined } from '@ant-design/icons';
 import AppNav from '@/components/common/AppNav';
 
 const navList = [
@@ -56,6 +56,21 @@ const navList = [
     label: '更新日志',
     pathname: '/convert/log',
     icon: <UnorderedListOutlined />,
+  },
+  {
+    label: '博客',
+    href: 'javascript:void(0);',
+    pathname: '/blog',
+    icon: <DatabaseOutlined />,
+    children: [{
+      label: '常见运动记录格式',
+      pathname: '/blog/fileExtension',
+      icon: <ReadOutlined />,
+    }, {
+      label: '转换工具存在的意义',
+      pathname: '/blog/whyConvert',
+      icon: <ReadOutlined />,
+    }]
   },
 ];
 function Nav(props) {

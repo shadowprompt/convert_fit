@@ -1,7 +1,7 @@
 import React from 'react';
 
 function defaultRenderItem(item, index, props) {
-  const { pathname } = props;
+  const pathname = props.pathname || '';
   let isActive = item.pathname === pathname;
   // 如果路径不相等但是是其自己父级路径，也可以认为是active
   if (!isActive) {

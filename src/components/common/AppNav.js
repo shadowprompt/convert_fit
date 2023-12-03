@@ -15,7 +15,9 @@ function defaultRenderItem(item, index, props) {
   return (
     <li key={item.key || item.pathname || index} id={itemId}
        className={["app-nav-item", isActive ? 'active' : ''].join(' ')}>
-      <a className="app-nav-item-link" href={item.href || item.pathname} title={item.title || item.label}>
+      <a className="app-nav-item-link"
+         style={{ pointerEvents: item.unClickAble ? 'none' : ''}}
+         href={item.unClickAble ? '#' : item.pathname} title={item.title || item.label}>
         <span className="app-nav-item-icon">{item.icon}</span>
         <span className="app-nav-item-text">{item.label}</span>
       </a>

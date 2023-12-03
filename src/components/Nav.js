@@ -15,7 +15,7 @@ const navList = [
   },
   {
     label: '运动记录导出',
-    href: 'javascript:void(0);',
+    unClickAble: true,
     pathname: '/convert/export',
     icon: <ExportOutlined />,
     children: [{
@@ -53,13 +53,8 @@ const navList = [
     icon: <ImportOutlined />,
   },
   {
-    label: '更新日志',
-    pathname: '/convert/log',
-    icon: <UnorderedListOutlined />,
-  },
-  {
     label: '博客',
-    href: 'javascript:void(0);',
+    unClickAble: true,
     pathname: '/blog',
     icon: <DatabaseOutlined />,
     children: [{
@@ -67,10 +62,15 @@ const navList = [
       pathname: '/blog/fileExtension',
       icon: <ReadOutlined />,
     }, {
-      label: '转换工具存在的意义',
+      label: '为什么转换格式',
       pathname: '/blog/whyConvert',
       icon: <ReadOutlined />,
     }]
+  },
+  {
+    label: '更新日志',
+    pathname: '/convert/log',
+    icon: <UnorderedListOutlined />,
   },
 ];
 function Nav(props) {

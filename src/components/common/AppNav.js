@@ -1,7 +1,7 @@
 import React from 'react';
 
 function defaultRenderItem(item, index, props) {
-  const { pathname } = props;
+  const pathname = props.pathname || '';
   let isActive = item.pathname === pathname;
   // 如果路径不相等但是是其自己父级路径，也可以认为是active
   if (!isActive) {
@@ -10,10 +10,14 @@ function defaultRenderItem(item, index, props) {
     isActive = item.pathname === parentPathname;
   }
 
+  const itemId = 'fit' + item.pathname.replaceAll('/', '_');
+
   return (
-    <li key={item.key || item.pathname || index}
+    <li key={item.key || item.pathname || index} id={itemId}
        className={["app-nav-item", isActive ? 'active' : ''].join(' ')}>
-      <a className="app-nav-item-link" href={item.href || item.pathname} title={item.title || item.label}>
+      <a className="app-nav-item-link"
+         style={{ pointerEvents: item.unClickAble ? 'none' : ''}}
+         href={item.unClickAble ? '#' : item.pathname} title={item.title || item.label}>
         <span className="app-nav-item-icon">{item.icon}</span>
         <span className="app-nav-item-text">{item.label}</span>
       </a>

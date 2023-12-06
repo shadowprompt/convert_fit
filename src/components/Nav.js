@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeOutlined, ReadOutlined, ExportOutlined, RocketFilled, PayCircleFilled, MailFilled, FileZipOutlined, ImportOutlined, UnorderedListOutlined, CodepenOutlined, CodeSandboxOutlined, MediumOutlined } from '@ant-design/icons';
+import { HomeOutlined, ReadOutlined, ExportOutlined, DatabaseOutlined, PayCircleFilled, MailFilled, FileZipOutlined, ImportOutlined, UnorderedListOutlined, CodepenOutlined, CodeSandboxOutlined, MediumOutlined } from '@ant-design/icons';
 import AppNav from '@/components/common/AppNav';
 
 const navList = [
@@ -15,7 +15,7 @@ const navList = [
   },
   {
     label: '运动记录导出',
-    href: 'javascript:void(0);',
+    unClickAble: true,
     pathname: '/convert/export',
     icon: <ExportOutlined />,
     children: [{
@@ -51,6 +51,21 @@ const navList = [
     label: '转换结果导入',
     pathname: '/convert/import',
     icon: <ImportOutlined />,
+  },
+  {
+    label: '博客',
+    unClickAble: true,
+    pathname: '/blog',
+    icon: <DatabaseOutlined />,
+    children: [{
+      label: '常见运动记录格式',
+      pathname: '/blog/fileExtension',
+      icon: <ReadOutlined />,
+    }, {
+      label: '为什么转换格式',
+      pathname: '/blog/whyConvert',
+      icon: <ReadOutlined />,
+    }]
   },
   {
     label: '更新日志',

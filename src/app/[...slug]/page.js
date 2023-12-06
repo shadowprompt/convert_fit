@@ -7,11 +7,16 @@ import { metadata as rootMetadata } from '@/app/layout';
 export async function generateMetadata({ params, searchParams }, parent) {
   const data = await getFileData(params.slug);
 
-  return {
+  const metaData = {
     title: `${data.title} - ${rootMetadata.title}`,
-    description: data.description,
-    keywords: data.keywords,
   }
+  if (data.keywords) {
+    metaData.keywords = data.keywords;
+  }
+  if (data.description) {
+    metaData.description = data.description;
+  }
+  return metaData;
 }
 
 export default async function SlugPage({ params }) {

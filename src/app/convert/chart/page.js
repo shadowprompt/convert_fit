@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Divider, Input, message, Radio, Upload } from 'antd';
 import Nav from '@/components/Nav';
 import ClientBottom from '@/components/client/ClientBottom';
@@ -10,7 +10,8 @@ import { chartDataProcessor, recordListProcessor } from '@/lib/utils';
 
 export default function ChartPage() {
   const [listData, setListData] = useState([]);
-  const chartInstanceRef = useRef(null);
+  const chartInstanceRef1 = useRef(null);
+  const chartInstanceRef2 = useRef(null);
 
   function getRecordList() {
     return fetch(siteConfig.apiBase + '/convert/recordList').then(response => response.json()).catch(err => {
@@ -19,12 +20,14 @@ export default function ChartPage() {
     });
   }
 
+  const recordList = useMemo(() => {
+    return recordListProcessor(listData);
+  }, [listData])
+
   function handleData() {
-    const list = recordListProcessor(listData);
+    const {x: dateList, dataMap} = chartDataProcessor(recordList, 'date');
 
-    const {x: dateList, dataMap} = chartDataProcessor(list, 'date');
-
-    const {x: cityDataX, y: cityDataY} = chartDataProcessor(list, 'city');
+    const {x: cityDataX, y: cityDataY} = chartDataProcessor(recordList, 'city');
 
     return {
       dataMap,
@@ -37,51 +40,12 @@ export default function ChartPage() {
       cityDataY,
     }
   }
-  function initChart() {
-    chartInstanceRef.current = echarts.init(document.getElementById('chart'));
-    const data = handleData();
-    // 绘制图表
-    const optionData = {
+  function initCityChart() {
+    const instance = echarts.init(document.getElementById('chart'));
+    const {x, y} = chartDataProcessor(recordList, 'city');
+    instance.setOption({
       title: {
-        text: '转换工具使用情况'
-      },
-      tooltip: {},
-      legend: {
-        data: ['请求次数', '转换次数', '华为次数', '小米次数']
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: data.dateList,
-      },
-      yAxis: {},
-      series: [
-        {
-          name: '请求次数',
-          type: 'bar',
-          data: data.dataList,
-        },
-        {
-          name: '转换次数',
-          type: 'bar',
-          data: data.dataListSuccess,
-        },
-        {
-          name: '华为次数',
-          type: 'line',
-          data: data.dataListHuawei,
-        },
-        {
-          name: '小米次数',
-          type: 'line',
-          data: data.dataListZepp,
-        },
-      ]
-    };
-
-    const optionData2 = {
-      title: {
-        text: '转换工具用户转换次数'
+        text: '用户城市'
       },
       tooltip: {},
       legend: {
@@ -90,52 +54,87 @@ export default function ChartPage() {
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: data.addressList,
+        data: x,
+        axisLabel: {
+          color: '#333',
+          interval: 0,
+          //  让x轴文字方向为竖向
+          formatter: function(value) {
+            return value.split('').join('\n')
+          }
+        }
       },
       yAxis: {},
       series: [
         {
           name: '请求次数',
           type: 'line',
-          data: data.addressDataList,
+          data: y,
         },
       ]
-    };
+    });
+    return instance;
+  }
 
-    const optionData3 = {
+  function initPaidChart() {
+    const instance = echarts.init(document.getElementById('chart2'));
+    const {x, dataMap} = chartDataProcessor(recordList, 'date');
+    // 过滤掉没有打赏的
+    const xList = x.filter(item => {
+      const list = dataMap[item];
+      return list.some(item => item.paid);
+    });
+    console.log('x ~ ', x, dataMap, xList);
+    const y = xList.map(item => dataMap[item].reduce((acc, cur) => {
+      return acc + (cur.payment === 'alipay' && cur.paid || 0);
+    }, 0));
+    instance.setOption({
       title: {
-        text: '转换工具用户城市'
+        text: '打赏数量'
       },
       tooltip: {},
       legend: {
-        data: ['请求次数']
+        data: ['打赏金额']
       },
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: data.cityDataX,
+        data: xList,
       },
       yAxis: {},
       series: [
         {
-          name: '请求次数',
+          name: '打赏金额',
           type: 'line',
-          data: data.cityDataY,
+          data: y,
         },
       ]
-    };
-    chartInstanceRef.current.setOption(optionData3);
+    });
+    return instance;
   }
 
   function onResize() {
-    if (chartInstanceRef.current) {
-      chartInstanceRef.current.resize();
+    if (chartInstanceRef1.current) {
+      chartInstanceRef1.current.resize();
+    }
+    if (chartInstanceRef2.current) {
+      chartInstanceRef2.current.resize();
     }
   }
 
   useEffect(() => {
-    initChart();
-  }, [listData])
+    chartInstanceRef1.current = initCityChart();
+    chartInstanceRef2.current = initPaidChart();
+
+    return () => {
+      if (chartInstanceRef1.current) {
+        chartInstanceRef1.current.dispose();
+      }
+      if (chartInstanceRef2.current) {
+        chartInstanceRef2.current.dispose();
+      }
+    }
+  }, [recordList])
 
   useEffect(() => {
     window.addEventListener('resize', onResize);
@@ -156,6 +155,7 @@ export default function ChartPage() {
       <div className="app-intro">
         <Divider>转换数据统计图</Divider>
         <div id="chart" style={{height: '420px'}}></div>
+        <div id="chart2" style={{height: '420px'}}></div>
       </div>
       <ClientBottom />
     </div>

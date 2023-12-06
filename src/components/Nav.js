@@ -65,6 +65,10 @@ const navList = [
       label: '为什么转换格式',
       pathname: '/blog/whyConvert',
       icon: <ReadOutlined />,
+    }, {
+      label: '华为运动健康数据同步至Keep',
+      pathname: '/blog/huawei_sync_to_keep',
+      icon: <ReadOutlined />,
     }]
   },
   {

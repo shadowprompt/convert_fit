@@ -24,30 +24,16 @@ export default function ChartPage() {
     return recordListProcessor(listData);
   }, [listData])
 
-  function handleData() {
-    const {x: dateList, dataMap} = chartDataProcessor(recordList, 'date');
-
-    const {x: cityDataX, y: cityDataY} = chartDataProcessor(recordList, 'city');
-
-    return {
-      dataMap,
-      dateList,
-      dataList: dateList.map(item => dataMap[item].length),
-      dataListSuccess: dateList.map(item => dataMap[item].filter(item => item.status === 'success').length),
-      dataListZepp: dateList.map(item => dataMap[item].filter(item => item.type === 'zepp').length),
-      dataListHuawei: dateList.map(item => dataMap[item].filter(item => item.type === 'huawei').length),
-      cityDataX,
-      cityDataY,
-    }
-  }
   function initCityChart() {
     const instance = echarts.init(document.getElementById('chart'));
     const {x, y} = chartDataProcessor(recordList, 'city');
     instance.setOption({
       title: {
-        text: '用户城市'
+        text: '用户城市信息'
       },
-      tooltip: {},
+      tooltip: {
+        trigger: 'axis'
+      },
       legend: {
         data: ['请求次数']
       },
@@ -85,16 +71,20 @@ export default function ChartPage() {
       return list.some(item => item.paid);
     });
     console.log('x ~ ', x, dataMap, xList);
-    const y = xList.map(item => dataMap[item].reduce((acc, cur) => {
+    const paidCountList = xList.map(item => dataMap[item].filter(item => item.status === 'success').length);
+    const paidAmountList = xList.map(item => dataMap[item].reduce((acc, cur) => {
       return acc + (cur.payment === 'alipay' && cur.paid || 0);
     }, 0));
+
     instance.setOption({
       title: {
-        text: '打赏数量'
+        text: '打赏信息'
       },
-      tooltip: {},
+      tooltip: {
+        trigger: 'axis'
+      },
       legend: {
-        data: ['打赏金额']
+        data: ['打赏次数', '打赏金额']
       },
       xAxis: {
         type: 'category',
@@ -104,9 +94,14 @@ export default function ChartPage() {
       yAxis: {},
       series: [
         {
+          name: '打赏次数',
+          type: 'line',
+          data: paidCountList,
+        },
+        {
           name: '打赏金额',
           type: 'line',
-          data: y,
+          data: paidAmountList,
         },
       ]
     });
@@ -155,6 +150,7 @@ export default function ChartPage() {
       <div className="app-intro">
         <Divider>转换数据统计图</Divider>
         <div id="chart" style={{height: '420px'}}></div>
+        <hr style={{marginTop: '20px', marginBottom: '40px'}}/>
         <div id="chart2" style={{height: '420px'}}></div>
       </div>
       <ClientBottom />

@@ -6,6 +6,7 @@ import Nav from '@/components/Nav';
 import ClientBottom from '@/components/client/ClientBottom';
 import * as echarts from 'echarts';
 import siteConfig from '@/app/siteConfig';
+import { recordListProcessor, chartDataProcessor } from '@/lib/utils';
 
 function MailPage() {
 
@@ -24,61 +25,17 @@ function MailPage() {
   }
 
   function handleData() {
-    const list = listData.map(item => {
-      const fileName = item.fileName;
-      const ts = fileName.replace('fit_', '') * 1;
-      const date = new Date(ts);
-      const year = date.getFullYear();
-      const month = date.getMonth() + 1;
-      const day = date.getDate();
-      return {
-        ...item,
-        date: `${year}-${month}-${day}`,
-      }
-    });
+    const list = recordListProcessor(listData);
 
-    const dataListMap = list.reduce((acc, cur) => {
-      const list = acc[cur.date] || [];
-      list.push(cur);
-      acc[cur.date] = list;
-      return acc;
-    }, {});
-
-    const sortDateList = Object.keys(dataListMap).sort((a, b) => new Date(a) - new Date(b));
-
-    // const sortDateListWithFileCount = sortDateList.filter(item => {
-    //   const list = dataListMap[item];
-    //   return list.some(item => item.fileCreatedCount)
-    // });
-
-    // const addressListMap = list.reduce((acc, cur) => {
-    //   const list = acc[cur.address] || [];
-    //   list.push(cur);
-    //   acc[cur.address] = list;
-    //   return acc;
-    // }, {});
-    //
-    // const addressList = Object.keys(addressListMap).filter(item => addressListMap[item].length > 5).sort((a, b) => addressListMap[b].length - addressListMap[a].length);
+    const {x, y, dataMap} = chartDataProcessor(list, 'date');
 
     return {
-      dataListMap,
-      dateList: sortDateList,
-      dataList: sortDateList.map(item => dataListMap[item].length),
-      dataListSuccess: sortDateList.map(item => dataListMap[item].filter(item => item.status === 'success').length),
-      dataListZepp: sortDateList.map(item => dataListMap[item].filter(item => item.type === 'zepp').length),
-      dataListHuawei: sortDateList.map(item => dataListMap[item].filter(item => item.type === 'huawei').length),
-      // dateListWithFileCount: sortDateListWithFileCount,
-      // dataListWithFileCount: sortDateListWithFileCount.map(item => {
-      //   const list = dataListMap[item];
-      //   return list.reduce((acc, curr) => acc + curr.fileCreatedCount, 0)
-      // }),
-      // addressListMap,
-      // addressList: addressList.map(item => {
-      //   const [name, domain = ''] = item.split('@');
-      //   const hideName = Array(Math.max(0, name.length - 2)).fill('*').join('');
-      //   return name.slice(0, 1) + hideName + domain.slice(-1) + `@${domain}`;
-      // }),
-      // addressDataList: addressList.map(item => addressListMap[item].length),
+      dataMap,
+      dateList: x,
+      dataList: y,
+      dataListSuccess: x.map(item => dataMap[item].filter(item => item.status === 'success').length),
+      dataListZepp: x.map(item => dataMap[item].filter(item => item.type === 'zepp').length),
+      dataListHuawei: x.map(item => dataMap[item].filter(item => item.type === 'huawei').length),
     }
   }
   function initChart() {
@@ -123,28 +80,6 @@ function MailPage() {
       ]
     };
 
-    const optionData2 = {
-      title: {
-        text: '转换工具用户转换次数'
-      },
-      tooltip: {},
-      legend: {
-        data: ['请求次数']
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: data.addressList,
-      },
-      yAxis: {},
-      series: [
-        {
-          name: '请求次数',
-          type: 'line',
-          data: data.addressDataList,
-        },
-      ]
-    };
     chartInstanceRef.current.setOption(optionData);
   }
 

@@ -23,7 +23,7 @@ const navList = [
       pathname: '/convert/export/huawei',
       icon: <CodepenOutlined />,
     }, {
-      label: '华为运动记录导出5年',
+      label: '导出近5年的华为运动记录',
       pathname: '/convert/export/huawei5',
       icon: <CodeSandboxOutlined />,
     }, {
@@ -68,6 +68,10 @@ const navList = [
     }, {
       label: '华为运动健康数据同步至Keep',
       pathname: '/blog/huawei_sync_to_keep',
+      icon: <ReadOutlined />,
+    }, {
+      label: '为什么劝大家慎入小米系',
+      pathname: '/blog/why_careful_with_xiaomi',
       icon: <ReadOutlined />,
     }]
   },

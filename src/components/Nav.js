@@ -73,6 +73,10 @@ const navList = [
       label: '为什么劝大家慎入小米系',
       pathname: '/blog/why_careful_with_xiaomi',
       icon: <ReadOutlined />,
+    }, {
+      label: '怎么批量删除佳明运动记录',
+      pathname: '/blog/remove_garmin_duplicate_records',
+      icon: <ReadOutlined />,
     }]
   },
   {

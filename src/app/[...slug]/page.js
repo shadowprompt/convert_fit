@@ -8,7 +8,10 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const data = await getFileData(params.slug);
 
   const metaData = {
-    title: `${data.title} - ${rootMetadata.title}`,
+    title: rootMetadata.title,
+  }
+  if (data.title) {
+    metaData.title = data.title + ' - ' + metaData.title;
   }
   if (data.keywords) {
     metaData.keywords = data.keywords;

@@ -1,8 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { getFileData } from '@/lib/posts-md';
 const readDir = fs.readdirSync;
 const readStat = fs.statSync;
 
+/**
+ * 获取markdown文件列表
+ * @returns {(*&{pathname: *})[]}
+ */
 export function getMdList() {
   const mdDir = path.join(process.cwd(), './src/markdown');
 
@@ -41,6 +46,28 @@ export function getMdList() {
     }
   })
 }
+
+/**
+ * 获取markdown文件数据
+ * @returns {Promise<*[]>}
+ */
+export async function getMdDataList() {
+  const mdList = getMdList();
+  const list = [];
+  for (const item of mdList) {
+    const slugs = item.pathname.split('/').filter(item => item);
+    const data = await getFileData(slugs);
+    list.push({
+      ...item,
+      title: data.title,
+      keywords: data.keywords,
+      description: data.description,
+      dateYMD: data.dateYMD,
+    });
+  }
+  return list;
+}
+
 // 处理转换记录
 export function recordListProcessor(list) {
   return list.map(item => {

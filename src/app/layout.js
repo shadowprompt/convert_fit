@@ -10,9 +10,9 @@ export const metadata = {
   'google-adsense-account': 'ca-pub-3013839362871866',
   manifest: '/manifest.json',
   icons: {
-    icon: '/res/drawable-mdpi/ic_shortcut_fit.png',
-    shortcut: '/res/drawable-mdpi/ic_shortcut_fit.png',
-    apple: '/res/drawable-mdpi/ic_shortcut_fit.png',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
   },
 }
 
@@ -40,9 +40,16 @@ export default function RootLayout({ children }) {
         s.parentNode.insertBefore(hm, s);
       })();`
       }}></Script>
-      <Script>
-
-      </Script>
+      <Script dangerouslySetInnerHTML={{
+        __html: `
+        (function(){
+        var el = document.createElement("script");
+        el.src = "https://lf1-cdn-tos.bytegoofy.com/goofy/ttzz/push.js?87cfc4e188e48dc1d3fd1d18159ca224bb6224e6ad587d98aa3dfd1eb4ad1fe845f9b46c8c41e6235de98982cdddb9785e566c8c06b0b36aec55fccc04fff972a6c09517809143b97aad1198018b8352";
+        el.id = "ttzz";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(el, s);
+        })(window);`
+      }}></Script>
     </html>
   )
 }

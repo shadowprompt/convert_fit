@@ -1,7 +1,7 @@
 ---
 title: 打赏支持
 keywords: 运动记录转换,锅巴瓜子,华为运动健康,小米运动健康,zepp lift,苹果健康,佳明,高驰,strava,rqrun
-date: 2023-12-15
+date: 2023-12-16
 ---
 
 <div class="toutiao-box">

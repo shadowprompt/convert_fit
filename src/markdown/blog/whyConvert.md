@@ -1,7 +1,7 @@
 ---
 title: 转换工具存在的意义
 keywords: fit文件,tcx文件,gpx文件,kml文件,csv文件
-date: 2023-12-02
+date: 2023-12-16
 ---
 
 ## 背景

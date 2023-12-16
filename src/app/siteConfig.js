@@ -12,6 +12,7 @@ export default {
   apiBase,
   indexNowUrl: 'https://www.bing.com/indexNow',
   indexNowKey: '4a3e9ca8c39d42809bdbf80cd153f78d',
+  icpNumber: '鄂ICP备2020023502号-5',
 }
 
 export const commonSeoData = {

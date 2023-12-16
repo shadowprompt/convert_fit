@@ -30,12 +30,18 @@ export async function getFileData(slug, dir = './') {
   }
   // dirPath可能以./开头，需要去掉.
   const pathname = dirPath.replace(/^(\.)/, '') + rawId;
-  const
-    file = path.join(absPath(dirPath), `${id}.${fileExt}`),
-    stat = await fsp.stat(file),
-    data = await fsp.readFile(file, 'utf8'),
-    matter = fm(data),
-    html = (await parse(matter.body)).toString();
+  const file = path.join(absPath(dirPath), `${id}.${fileExt}`);
+  const stat = await fsp.stat(file).catch(err => {
+    console.log('fsp.stat ~ ', err + '');
+  });
+  // 文件不存在直接返回空对象
+  if (!stat) {
+    return {};
+  }
+
+  const data = await fsp.readFile(file, 'utf8');
+  const matter = fm(data);
+  const html = (await parse(matter.body)).toString();
   // date formatting
   const date = matter.attributes.date || stat.ctime;
   matter.attributes.date = date.toUTCString();

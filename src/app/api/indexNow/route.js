@@ -24,7 +24,7 @@ export async function GET(request) {
       host: siteConfig.host,
       key: siteConfig.indexNowKey,
       keyLocation: `${siteConfig.siteUrl}/${siteConfig.indexNowKey}.txt`,
-      urlList: updateList.map(item => siteConfig.siteUrl + item.pathname),
+      urlList: updateList.map(item => siteConfig.siteUrl + (item.pathname).replace(/\/index$/, '')),
     }
     return axios.post(siteConfig.indexNowUrl, indexNowParams).then(res => {
       dLog('indexNow ~ res', res.status, res.statusText);

@@ -2,12 +2,12 @@ import React from 'react';
 import Nav from '@/components/Nav';
 import ServerBottom from '@/components/server/ServerBottom';
 import { getFileData } from '@/lib/posts-md';
-import { generateCommonSeoData } from '@/app/siteConfig';
+import { generateCommonMetaData } from '@/app/siteConfig';
 
 export async function generateMetadata({ params, searchParams }, parent) {
   const data = await getFileData(params.slug);
 
-  return generateCommonSeoData(data);
+  return generateCommonMetaData(data);
 }
 
 export default async function SlugPage({ params }) {

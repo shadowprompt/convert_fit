@@ -11,7 +11,7 @@ export default function sitemap() {
     return {
       url: siteConfig.siteUrl + pathname,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'daily',
       priority: 0.5,
     }
   }).filter(item => item.url !== siteConfig.siteUrl); // 过滤掉首页

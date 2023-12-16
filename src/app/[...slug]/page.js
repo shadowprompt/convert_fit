@@ -2,24 +2,12 @@ import React from 'react';
 import Nav from '@/components/Nav';
 import ServerBottom from '@/components/server/ServerBottom';
 import { getFileData } from '@/lib/posts-md';
-import { metadata as rootMetadata } from '@/app/layout';
+import { generateCommonSeoData } from '@/app/siteConfig';
 
 export async function generateMetadata({ params, searchParams }, parent) {
   const data = await getFileData(params.slug);
 
-  const metaData = {
-    title: rootMetadata.title,
-  }
-  if (data.title) {
-    metaData.title = data.title + ' - ' + metaData.title;
-  }
-  if (data.keywords) {
-    metaData.keywords = data.keywords;
-  }
-  if (data.description) {
-    metaData.description = data.description;
-  }
-  return metaData;
+  return generateCommonSeoData(data);
 }
 
 export default async function SlugPage({ params }) {

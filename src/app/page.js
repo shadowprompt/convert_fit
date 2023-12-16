@@ -2,16 +2,12 @@ import React from 'react';
 import Nav from '@/components/Nav';
 import ServerBottom from '@/components/server/ServerBottom';
 import { getFileData } from '@/lib/posts-md';
-import { metadata as rootMetadata } from '@/app/layout';
+import { generateCommonSeoData } from '@/app/siteConfig';
 
 export async function generateMetadata({ params, searchParams }, parent) {
   const data = await getFileData('');
 
-  return {
-    title: `${rootMetadata.title}`,
-    description: data.description,
-    keywords: data.keywords,
-  }
+  return generateCommonSeoData(data);
 }
 
 export default async function Home({ params }) {

@@ -70,6 +70,10 @@ const navList = [
       pathname: '/blog/huawei_sync_to_keep',
       icon: <ReadOutlined />,
     }, {
+      label: '华为运动健康数据同步至微信',
+      pathname: '/blog/huawei_sync_to_wechat',
+      icon: <ReadOutlined />,
+    }, {
       label: '为什么劝大家慎入小米系',
       pathname: '/blog/why_careful_with_xiaomi',
       icon: <ReadOutlined />,

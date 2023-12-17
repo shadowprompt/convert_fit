@@ -1,7 +1,7 @@
 ---
 title: 华为运动健康数据同步至Keep
-keywords: tcx文件,fit文件,gpx文件,csv文件,json文件,tcx,fit,gpx,csv,json,运动记录
-date: 2023-12-16
+keywords: 华为运动健康,keep,步数,运动记录
+date: 2023-12-17
 ---
 
 打卡Keep app，依此点击"我的" -> 左上角的三条横杠 -> 设备与应用 -> 添加设备 -> 华为运动健康，然后根据步骤操作即可。

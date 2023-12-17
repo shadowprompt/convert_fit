@@ -20,26 +20,46 @@ export async function GET(request) {
   };
 
   if (updateList.length > 0) {
-    const indexNowParams = {
+    const urlList = updateList.map(item => siteConfig.siteUrl + (item.pathname).replace(/\/index$/, ''));
+
+    const bingParams = {
       host: siteConfig.host,
-      key: siteConfig.indexNowKey,
-      keyLocation: `${siteConfig.siteUrl}/${siteConfig.indexNowKey}.txt`,
-      urlList: updateList.map(item => siteConfig.siteUrl + (item.pathname).replace(/\/index$/, '')),
-    }
-    return axios.post(siteConfig.indexNowUrl, indexNowParams).then(res => {
-      dLog('indexNow ~ res', res.status, res.statusText);
+      key: siteConfig.bingKey,
+      keyLocation: `${siteConfig.siteUrl}/${siteConfig.bingKey}.txt`,
+      urlList,
+    };
+
+    const baiduParams = urlList.join('\n');
+
+    return Promise.all([
+      axios.post(siteConfig.bingUrl, bingParams),
+      axios.post(`${siteConfig.baiduUrl}?site=${siteConfig.siteUrl}&token=${siteConfig.baiduToken}`, baiduParams),
+    ]).then(([bingRes, baiduRes]) => {
+      dLog('bingRes', bingRes.status, bingRes.statusText);
+      dLog('baiduRes', baiduRes.status, baiduRes.statusText);
       return NextResponse.json({
         ...data,
-        indexNowParams,
+        bingParams,
+        baiduParams,
         success: true,
-        status: res.status,
+        bing: {
+          status: bingRes.status,
+          statusText: bingRes.statusText,
+        },
+        baidu: {
+          status: baiduRes.status,
+          statusText: baiduRes.statusText,
+          data: baiduRes.data,
+        }
       });
     }).catch(err => {
       dLog('indexNow ~ err', err);
       return NextResponse.json({
         ...data,
-        indexNowParams,
+        bingParams,
+        baiduParams,
         success: false,
+        err: err + '',
       });
     });
   } else {

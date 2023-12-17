@@ -10,8 +10,10 @@ export default {
   siteUrl,
   siteName,
   apiBase,
-  indexNowUrl: 'https://www.bing.com/indexNow',
-  indexNowKey: '4a3e9ca8c39d42809bdbf80cd153f78d',
+  bingUrl: 'https://www.bing.com/indexNow',
+  bingKey: '4a3e9ca8c39d42809bdbf80cd153f78d',
+  baiduUrl: 'http://data.zz.baidu.com/urls',
+  baiduToken: 'MR07k0A4plkhN4G7',
   icpNumber: '鄂ICP备2020023502号-5',
 }
 

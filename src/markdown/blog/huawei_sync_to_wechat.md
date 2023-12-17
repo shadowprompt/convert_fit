@@ -22,15 +22,20 @@ date: 2023-12-17
 ![](https://wp-img.daozhao.com/fitconverter/20231217162358.png)
 
 点击"绑定设备"就会同时关注上"华为运动健康"公众号了。
+
 ![](https://wp-img.daozhao.com/fitconverter/20231217162505.png)
 
 此时点击公众号下方菜单“最新排行”，弹出微信步数排行榜即代表绑定成功。
+
 ![](https://wp-img.daozhao.com/fitconverter/20231217162956.png)
 
 ### 换绑
 如果以前绑定过想换绑的，打开华为“运动健康 APP”，点击 我的 > 隐私管理 > 数据分享与授权 > 微信排行榜，里面会显示"已绑定"。
+
 ![](https://wp-img.daozhao.com/fitconverter/20231217162014.png)
+
 我们可以根据上面的指引，先在微信中取消关注"华为运动健康"公众号，然后在点击"重新绑定"。
+
 ![](https://wp-img.daozhao.com/fitconverter/20231217162249.png)
 
 ### 解绑

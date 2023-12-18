@@ -73,7 +73,7 @@ export default function ChartPage() {
     console.log('x ~ ', x, dataMap, xList);
     const paidCountList = xList.map(item => dataMap[item].filter(item => item.status === 'success').length);
     const paidAmountList = xList.map(item => dataMap[item].reduce((acc, cur) => {
-      return acc + (cur.payment !== 'toutiao' && cur.paid || 0);
+      return acc + ((cur.status === 'success' && cur.payment !== 'toutiao' && cur.paid) || 0);
     }, 0));
 
     instance.setOption({

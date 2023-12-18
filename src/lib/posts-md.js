@@ -36,7 +36,10 @@ export async function getFileData(slug, dir = './') {
   });
   // 文件不存在直接返回空对象
   if (!stat) {
-    return {};
+    return {
+      title: '当前URL不存在',
+      html: `<section><p>请确认当前页面的URL是否有误</p><p>记录时间：${new Date()}</p></section>`,
+    };
   }
 
   const data = await fsp.readFile(file, 'utf8');

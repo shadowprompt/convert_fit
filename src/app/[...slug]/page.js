@@ -21,7 +21,7 @@ export default async function SlugPage({ params }) {
           <h1>{data.title}</h1>
         </div>
         <section className="app-article-content" dangerouslySetInnerHTML={{
-          __html: data.html
+          __html: data.html || ''
         }}></section>
         <ServerBottom />
       </div>

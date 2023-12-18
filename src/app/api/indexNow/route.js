@@ -1,26 +1,22 @@
 import { NextResponse } from "next/server";
-import { getMdDataList, getMdList } from '@/lib/utils';
+import { getMdDataList } from '@/lib/utils';
 import siteConfig from '@/app/siteConfig';
 const axios = require('axios');
 
 const { dLog } = require('@daozhao/utils');
 
-export const dynamic = 'force-dynamic' // defaults to force-static
-export async function GET(request) {
+async function getUpdateMdList() {
   const list = await getMdDataList();
 
   const ts = Date.now();
   const oneDayTs = 24 * 60 * 60 * 1000;
-  const updateList = list.filter(item => (ts - new Date(item.dateYMD).getTime()) < oneDayTs);
+  return list.filter(item => (ts - new Date(item.dateYMD).getTime()) < oneDayTs);
+}
 
-
-
-  const data = {
-    updateList,
-  };
-
+function handleResponse(updateList) {
   if (updateList.length > 0) {
-    const urlList = updateList.map(item => siteConfig.siteUrl + (item.pathname).replace(/\/index$/, ''));
+    // bodyList里面的元素直接就是其pathname
+    const urlList = updateList.map(item => siteConfig.siteUrl + (item.pathname || item || '').replace(/\/index$/, ''));
 
     const bingParams = {
       host: siteConfig.host,
@@ -38,7 +34,7 @@ export async function GET(request) {
       dLog('bingRes', bingRes.status, bingRes.statusText);
       dLog('baiduRes', baiduRes.status, baiduRes.statusText);
       return NextResponse.json({
-        ...data,
+        updateList,
         bingParams,
         baiduParams,
         success: true,
@@ -55,7 +51,7 @@ export async function GET(request) {
     }).catch(err => {
       dLog('indexNow ~ err', err);
       return NextResponse.json({
-        ...data,
+        updateList,
         bingParams,
         baiduParams,
         success: false,
@@ -63,6 +59,42 @@ export async function GET(request) {
       });
     });
   } else {
-    return NextResponse.json({data});
+    return NextResponse.json({
+      updateList,
+    });
   }
+}
+
+export const dynamic = 'force-dynamic' // defaults to force-static
+
+export async function GET(req) {
+  const updateMdList = await getUpdateMdList();
+
+  return handleResponse(updateMdList)
+}
+
+export async function POST(req) {
+  const requestBody = await req.json();
+  const bodyList = requestBody.list || [];
+
+  const updateMdList = await getUpdateMdList();
+
+  const pathnameSet = new Set();
+  const updateList= [
+    ...updateMdList,
+    ...bodyList,
+  ].reduce((acc, curr) => {
+    const pathname = curr.pathname || curr || '';
+    if (!pathnameSet.has(pathname)) {
+      pathnameSet.add(pathname);
+
+      return [
+        ...acc,
+        curr
+      ];
+    }
+    return acc;
+  }, [])
+
+  return handleResponse(updateList);
 }

@@ -78,6 +78,10 @@ const navList = [
       pathname: '/blog/why_careful_with_xiaomi',
       icon: <ReadOutlined />,
     }, {
+      label: '为什么app上显示的跑步轨迹会出现偏移',
+      pathname: '/blog/running_track_offset',
+      icon: <ReadOutlined />,
+    }, {
       label: '怎么批量删除佳明运动记录',
       pathname: '/blog/remove_garmin_duplicate_records',
       icon: <ReadOutlined />,

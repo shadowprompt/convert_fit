@@ -46,7 +46,9 @@ export async function getFileData(slug, dir = './') {
   const matter = fm(data);
   const html = (await parse(matter.body)).toString();
   // date formatting
-  const date = matter.attributes.date || stat.ctime;
+  const date = matter.attributes.fakeAsUpdateDaily
+    ? new Date()
+    : (matter.attributes.date || stat.ctime)
   matter.attributes.date = date.toUTCString();
   matter.attributes.dateYMD = dateformat.ymd(date);
   matter.attributes.dateFriendly = dateformat.friendly(date);

@@ -19,6 +19,7 @@ export default async function SlugPage({ params }) {
       <div className="app-intro">
         <div className="app-article-title">
           <h1>{data.title}</h1>
+          <div>更新时间：{data.dateYMD}</div>
         </div>
         <section className="app-article-content" dangerouslySetInnerHTML={{
           __html: data.html || ''

@@ -215,6 +215,7 @@ function MailPage() {
             <Radio.Group onChange={onTypeChange} value={type}>
               <Radio value="huawei">华为运动健康</Radio>
               <Radio value="zepp">Zepp Life（原小米运动）</Radio>
+              <Radio value="xiaomi">小米运动健康</Radio>
             </Radio.Group>
           </div>
           <Divider orientation="left" plain>待上传压缩包结构说明</Divider>

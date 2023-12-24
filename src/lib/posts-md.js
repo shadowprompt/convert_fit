@@ -23,16 +23,25 @@ export async function getFileData(slug, dir = './') {
   const slugList = Array.isArray(slug) ? slug : [slug];
   // 最后一项为文件名，其余是目录名
   const rawId = slugList.pop() || '';
-  const id = rawId || 'index'; // 为空时默认为 index
+  let id = rawId || 'index'; // 为空时默认为 index
   let dirPath  = dir;
   if (slugList.length > 0) {
     dirPath += slugList.join('/') + '/';
   }
   // dirPath可能以./开头，需要去掉.
   const pathname = dirPath.replace(/^(\.)/, '') + rawId;
-  const file = path.join(absPath(dirPath), `${id}.${fileExt}`);
-  const stat = await fsp.stat(file).catch(err => {
-    console.log('fsp.stat ~ ', err + '');
+  let file = path.join(absPath(dirPath), `${id}.${fileExt}`);
+  let stat = await fsp.stat(file).catch(err => {
+    console.log('fsp.stat 1~ ', err + '');
+  });
+  // 尝试将原id作为目录名，读取其index.md
+  if (!stat) {
+    dirPath = dirPath + '/' + id;
+    id = 'index';
+    file = path.join(absPath(dirPath), `${id}.${fileExt}`);
+  }
+  stat = await fsp.stat(file).catch(err => {
+    console.log('fsp.stat 2~ ', err + '');
   });
   // 文件不存在直接返回空对象
   if (!stat) {

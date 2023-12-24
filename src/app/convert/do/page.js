@@ -207,6 +207,7 @@ function MailPage() {
     <div>
       <Nav pathname='/convert/do'/>
       <div className="app-intro">
+        <h1 className="app-article-title">转换运动记录</h1>
         <Divider>转换请求响应统计图</Divider>
         <div id="chart" style={{height: '420px'}}></div>
         <Divider>压缩包文件格式说明</Divider>

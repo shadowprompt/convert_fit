@@ -15,7 +15,6 @@ const navList = [
   },
   {
     label: '运动记录导出',
-    unClickAble: true,
     pathname: '/convert/export',
     icon: <ExportOutlined />,
     children: [{

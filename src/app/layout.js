@@ -25,9 +25,8 @@ export default function RootLayout({ children }) {
       <Script async
               src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3013839362871866"
               crossOrigin="anonymous"></Script>
-      <Script charSet="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></Script>
       <Script dangerouslySetInnerHTML={{
-        __html: `window.LA && window.LA.init({id:"K8VYEj2YzzwEOsl6",ck:"K8VYEj2YzzwEOsl6"})`
+        __html: `!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"K8VYEj2YzzwEOsl6",ck:"K8VYEj2YzzwEOsl6"});`
       }}></Script>
       <Script dangerouslySetInnerHTML={{
         __html: `var _hmt = _hmt || [];

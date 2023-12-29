@@ -86,7 +86,7 @@ const navList = [
       icon: <ReadOutlined />,
     }, {
       label: '小米运动健康文件过大需分段',
-      pathname: '/blog/xiaomi_give_up_export_time_range.md',
+      pathname: '/blog/xiaomi_give_up_export_time_range',
       icon: <ReadOutlined />,
     }]
   },

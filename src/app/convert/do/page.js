@@ -227,7 +227,7 @@ function MailPage() {
 
           <Divider>提交转换申请</Divider>
           <p className="upload-box">
-            请将<b>上述压缩包</b>及<b><a href={siteConfig.siteUrl + '/pay'} target="_blank">转账记录截图</a></b>发送至<b>JustNotify@qq.com</b>的邮箱
+            请将<b>上述压缩包</b>及<b><a href={siteConfig.siteUrl + '/pay'} target="_blank">转账记录截图</a></b>发送至<b>JustNotify@qq.com</b>的邮箱，最好一并告知下准备转换后导入哪个平台，高驰，佳明，还是其它？
           </p>
         </section>
       </div>

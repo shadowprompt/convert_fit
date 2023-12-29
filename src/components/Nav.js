@@ -84,6 +84,10 @@ const navList = [
       label: '怎么批量删除佳明运动记录',
       pathname: '/blog/remove_garmin_duplicate_records',
       icon: <ReadOutlined />,
+    }, {
+      label: '小米运动健康文件过大需分段',
+      pathname: '/blog/xiaomi_give_up_export_time_range.md',
+      icon: <ReadOutlined />,
     }]
   },
   {

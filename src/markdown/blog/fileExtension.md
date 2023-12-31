@@ -1,7 +1,7 @@
 ---
 title: 常见运动记录格式
-keywords: tcx文件,fit文件,gpx文件,csv文件,json文件,tcx,fit,gpx,csv,json,运动记录
-date: 2023-12-16
+keywords: gpx,运动记录格式
+date: 2023-12-31
 ---
 
 随着可穿戴设备的发展，以及手机厂商也进入了运动健康领域，目前市面上的运动记录的文件格式还不少。

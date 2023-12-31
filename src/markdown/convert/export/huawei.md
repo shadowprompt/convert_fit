@@ -1,8 +1,8 @@
 ---
 title: 华为运动记录导出
+keywords: 华为运动健康导出
 description: '华为官方开放了数据副本导出入口，选择其中的运动健康，通过信息验证后就可以设置数据包密码申请导出了，等待大概7天就能收到通知，下载下来压缩包，然后凭密码解压即可。'
-keywords: '华为运动健康导出,华为运动健康导入高驰佳明,华为运动健康tcx,华为运动健康fit,华为运动健康导入华为,华为运动健康导入RQrun,华为运动健康导入数据'
-date: 2023-12-16
+date: 2023-12-31
 ---
 ### 数据导出路径
 先从华为官方申请导出数据 [链接](https://privacy-cn.consumer.huawei.com/privacycenter/index.html?lang=zh-cn&themeName=blue&backUrl=https://privacy-cn.consumer.huawei.com/privacycenter/service/pindex.html%3Flang%3Dzh-cn%26themeName%3Dblue&countryCode=CN#/Home?lang=zh-cn)，点击获取您的数据副本，经过四重验证之后，就可以申请导出了。

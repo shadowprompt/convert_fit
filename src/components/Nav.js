@@ -85,8 +85,12 @@ const navList = [
       pathname: '/blog/remove_garmin_duplicate_records',
       icon: <ReadOutlined />,
     }, {
-      label: '小米运动健康文件过大需分段',
+      label: '为什么小米运动健康文件可能需要分段',
       pathname: '/blog/xiaomi_give_up_export_time_range',
+      icon: <ReadOutlined />,
+    }, {
+      label: '支持将华为跳绳类运动记录导入至佳明',
+      pathname: '/blog/support_rope_skipping_to_garmin',
       icon: <ReadOutlined />,
     }]
   },

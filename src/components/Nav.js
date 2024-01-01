@@ -58,11 +58,11 @@ const navList = [
     icon: <DatabaseOutlined />,
     children: [{
       label: '常见运动记录格式',
-      pathname: '/blog/fileExtension',
+      pathname: '/blog/sport_record_file_extension',
       icon: <ReadOutlined />,
     }, {
       label: '为什么转换格式',
-      pathname: '/blog/whyConvert',
+      pathname: '/blog/meaning_of_converter',
       icon: <ReadOutlined />,
     }, {
       label: '华为运动健康数据同步至Keep',
@@ -86,7 +86,7 @@ const navList = [
       icon: <ReadOutlined />,
     }, {
       label: '为什么小米运动健康文件可能需要分段',
-      pathname: '/blog/xiaomi_give_up_export_time_range',
+      pathname: '/blog/why_split_xiaomi_convert_result',
       icon: <ReadOutlined />,
     }, {
       label: '支持将华为跳绳类运动记录导入至佳明',

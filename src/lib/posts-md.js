@@ -5,6 +5,7 @@ import { parse } from 'marked';
 import * as dateformat from './dateformat';
 const fileExt = 'md';
 const slugMap = {
+  'blog/bindAndImport': 'blog/huawei_sync_to_keep',
   'blog/fileExtension': 'blog/sport_record_file_extension',
   'blog/whyConvert': 'blog/meaning_of_converter',
   'blog/xiaomi_give_up_export_time_range': 'blog/why_split_xiaomi_convert_result',

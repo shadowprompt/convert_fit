@@ -6,7 +6,7 @@ export default function robots() {
       allow: '/',
       disallow: ['/private/'],
     },
-    host: siteConfig.host,
+    // host: siteConfig.host,
     sitemap: siteConfig.siteUrl + '/sitemap.xml',
   }
 }

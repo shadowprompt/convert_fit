@@ -24,6 +24,13 @@ export default async function SlugPage({ params }) {
         <section className="app-article-content" dangerouslySetInnerHTML={{
           __html: data.html || ''
         }}></section>
+        {
+          data.keywords && (
+            <div className="app-article-keywords" dangerouslySetInnerHTML={{
+              __html: '内容标签：' + (data.keywords || '').split(',').map(item => `<strong>${item}</strong>`).join(' ')
+            }}></div>
+          )
+        }
         <ServerBottom />
       </div>
     </div>

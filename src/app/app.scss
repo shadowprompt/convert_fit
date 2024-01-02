@@ -105,6 +105,18 @@ body {
       max-width: 90%;
     }
   }
+  .app-article-keywords {
+    margin-top: 24px;
+  }
+  .countWrapper {
+    margin-top: 64px;
+    text-align: center;
+    .highlight {
+        color: #ff0000;
+        font-size: 24px;
+        font-weight: bold;
+    }
+  }
   .img-box {
     text-align: center;
   }

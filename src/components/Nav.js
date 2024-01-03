@@ -92,6 +92,10 @@ const navList = [
       label: '支持将华为跳绳类运动记录导入至佳明',
       pathname: '/blog/support_rope_skipping_to_garmin',
       icon: <ReadOutlined />,
+    }, {
+      label: '什么是兜底的运动类型',
+      pathname: '/blog/what_is_default_sport_type',
+      icon: <ReadOutlined />,
     }]
   },
   {

@@ -26,7 +26,11 @@ const navList = [
       pathname: '/convert/export/huawei5',
       icon: <CodeSandboxOutlined />,
     }, {
-      label: '小米运动记录导出',
+      label: 'Zepp Life运动记录导出',
+      pathname: '/convert/export/zepp',
+      icon: <MediumOutlined />,
+    }, {
+      label: '小米运动健康运动记录导出',
       pathname: '/convert/export/xiaomi',
       icon: <MediumOutlined />,
     }]

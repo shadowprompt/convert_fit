@@ -1,23 +1,24 @@
 ---
-title: 小米运动记录导出
-keywords: 小米运动健康数据导出
+title: 小米运动健康运动记录导出
+keywords: 小米运动健康,数据导出
 description: 小米官方开放了数据导出入口，只是比较隐晦，需要在注销账号那边选择导出，按照步骤就能申请导出了，一两分钟就能收到邮件提示下载压缩包，同事附带的有压缩包密码，然后凭密码解压即可。
-date: 2023-12-31
+date: 2024-01-05
 ---
 ### 数据导出路径
-小米运动有官方的导出渠道，从小米的Zepp Life app进入**我的**-**设置**-**账号与安全**-**注销账号**-**导出数据**
+通过[链接](https://account.xiaomi.com/fe/service/account/privacy)直接登录小米账号，进入**隐私中心**-**管理您的数据**，待通过验证后，就可以选择**小米运动健康**进行下载导出数据了。
 
-接下来根据提示选择即可，官方说的而是30分钟之内会生成导出结果，但是实际上很快就生成好了。
+接下来根据提示选择即可，很快就生成好了。
 
 ### 数据导出图示
 
-![图片](/content/xiaomi/1.png)
+![图片](/content/xiaomi/xiaomi2.png)
 
-![图片](/content/xiaomi/2.png)
+![图片](/content/xiaomi/xiaomi3.png)
 
-![图片](/content/xiaomi/3.png)
+![图片](/content/xiaomi/xiaomi5.png)
 
-![图片](/content/xiaomi/4.png)
+![图片](https://wp-img.daozhao.com/fitconverter/20231229230836.png)
+
 
 ### 导出数据介绍
 
@@ -25,19 +26,13 @@ date: 2023-12-31
 
 我们主要能用到数据是图中的几个文件夹
 
-![图片](/content/xiaomi/5.png)
+![图片](/content/xiaomi/xiaomi6.png)
 
-- SPORT开头的csv文件里面记录每天的各项“主动”运动（比如户外跑步），可能有，也可能没有，有该次运动的时长、配速、距离、卡路里信息。
+- XXX_MiFitness_hlth_center_sport_record开头的csv文件里面记录每天的各项“主动”运动（比如户外跑步），可能有，也可能没有，有该次运动的时长、配速、距离、卡路里信息。
 
-![图片](/content/xiaomi/7.png)
+![图片](/content/xiaomi/xiaomi7.png)
 
-- HEARTRATE_AUTO开头的csv文件里面有每分钟的心率数据，这个是自动检测的，不用主动操作，每天会有很多条记录
-
-![图片](/content/xiaomi/8.png)
-
-- ACTIVITY_MINITU开头的csv文件里面有每天“每分钟”的步数，因为不可能每分钟都有步数变化，所以这里面不是每分钟都有
-
-![图片](/content/xiaomi/9.png)
+- XXX_MiFitness_hlth_center_fitness_data开头的csv文件里面运动细节数据
 
 因为小米官方给的每条运动记录并没有直接整理出期间每时间段的心率、步数等信息，所以只能靠我们自己，我们要做的就是将每个sport时间段的心率数据和步数信息等信息聚合到一起形成一个tcx格式的运动记录，遗憾的是导出数据里面**没有GPS信息**。。。
 
@@ -54,9 +49,9 @@ date: 2023-12-31
 
 拿到转换后的文件就可以导入**高驰**、**佳明**等平台，华为运动健康也是支持导入，只不过它只支持tcx格式。
 
-只要有上述数据，我们就能在导入的平台里面看到图形了。 如果数据不连续，缺失较多，可能只能看到零星几个点。
+只要有上述数据，我们就能在导入的平台里面看到图形了，这里跟[Zepp Life](/convert/export/zepp)类似。 如果数据不连续，缺失较多，可能只能看到零星几个点。
 
-![图片](/content/xiaomi/6.png)
+![图片](/content/zepp/6.png)
 
 
 相比官方肯定是有一定差距的，但是聊胜于无，只能这样了。

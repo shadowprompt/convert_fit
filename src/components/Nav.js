@@ -100,6 +100,10 @@ const navList = [
       label: '什么是兜底的运动类型',
       pathname: '/blog/what_is_default_sport_type',
       icon: <ReadOutlined />,
+    }, {
+      label: '好消息！小米运动健康文件不用分段了',
+      pathname: '/blog/not_split_xiaomi_convert_result',
+      icon: <ReadOutlined />,
     }]
   },
   {
